@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+
+[dev-packages]
+pre-commit = "*"
+bumpversion = "*"
+pytest = "*"
+"flake8" = "*"
+pytest-cov = "*"
+
+[requires]
+python_version = "3.6"
