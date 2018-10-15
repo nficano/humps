@@ -17,7 +17,7 @@ setup(
     version='0.1.1',
     author='Nick Ficano',
     author_email='nficano@gmail.com',
-    packages=['pyhumps'],
+    packages=['humps'],
     url='https://github.com/nficano/humps',
     license=license,
     classifiers=[
