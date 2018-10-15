@@ -14,7 +14,7 @@ with open('LICENSE') as readme_file:
 
 setup(
     name='pyhumps',
-    version='0.1.1',
+    version='0.2.0',
     author='Nick Ficano',
     author_email='nficano@gmail.com',
     packages=['pyhumps'],
