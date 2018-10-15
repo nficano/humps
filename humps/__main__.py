@@ -3,8 +3,6 @@ import datetime as dt
 from collections import Mapping
 from inspect import isfunction
 
-CAMEL_RE = re.compile('^([a-z]{1,}[A-Z].*)$')
-
 UNDERSCORE_RE = re.compile('[\-_\s]+(.?)')
 SPLIT_RE = re.compile('([A-Z][^A-Z]*)')
 

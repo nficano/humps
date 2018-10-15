@@ -1,14 +1,11 @@
-<p align="center">
+## Humps
 
-</p>
+Underscore-to-camelCase converter (and vice versa) for strings and object keys in Python.
 
-## Getting Started
+When converting dictionary keys, it will recusively iterate over each key/value pairs, converting any nested dictionaries (or lists of nested dictionaries) along the way.
+This feature is maintaining idiomatic data formatting when interacting with data seralized from/to different languages.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
+Takes inspiration from [Humps](https://github.com/domchristie/humps).
 
 ```
 Give examples
