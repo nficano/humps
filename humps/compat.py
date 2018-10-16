@@ -5,6 +5,7 @@ import sys
 PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
 
+
 def unicode(s):
     if PY2:
         return s.encode('utf-8')
