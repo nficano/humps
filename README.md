@@ -1,6 +1,7 @@
 <p align="center">
   <img src="./artwork/humps.png" alt="Humps logo" width="245" height="118">
   <div align="center">
+    <a href="https://travis-ci.org/nficano/humps"><img src="https://travis-ci.org/nficano/humps.svg?branch=master" /></a>
     <img src="https://img.shields.io/badge/python-3.6-blue.svg">
     <img src="https://img.shields.io/pypi/v/pyhumps.svg" alt="pypi">
     <a href="https://pypi.python.org/pypi/pyhumps/"><img src="https://img.shields.io/pypi/pyversions/pyhumps.svg" /></a>
