@@ -62,7 +62,7 @@ humps.is_pascalcase(string)
 humps.is_snakecase(string)
 ```
 
-## Example Usage
+### How I use humps
 ```python
 # pythonic_boto3.py
 import humps
