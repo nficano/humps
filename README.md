@@ -64,7 +64,7 @@ humps.is_snakecase('downTheRoad')  # False
 ```
 
 ### How personally I use humps
-
+<hr>
 #### Pythonic Boto3 API Wrapper
 
 ```python
@@ -82,7 +82,7 @@ def api(service, decamelize=True, *args, **kwargs):
 api('s3:download_file', bucket='bucket', key='hello.png', filename='hello.png')
 ```
 
-#### Flask-RESTful Adaptive responses
+#### Flask-RESTful Adaptive Responses
 
 ```python
 # I will post a code snippet for this soon. It's a decorator that checks if
