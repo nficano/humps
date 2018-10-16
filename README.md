@@ -71,6 +71,7 @@ humps.decamelize_keys([
 #### API Methods
 ```python
 import humps
+
 humps.camelize(string)
 humps.decamelize(string)
 humps.depascalize(string)
