@@ -1,4 +1,12 @@
-# Humps
+<p align="center">
+  <img src="./artwork/humps.png" alt="Humps logo" width="245" height="118">
+  <div align="center">
+    <img src="https://img.shields.io/badge/python-3.6-blue.svg">
+    <img src="https://img.shields.io/pypi/v/pyhumps.svg" alt="pypi">
+    <a href="https://pypi.python.org/pypi/pyhumps/"><img src="https://img.shields.io/pypi/pyversions/pyhumps.svg" /></a>
+  </div>
+</p>
+
 
 Convert strings (and dictionary keys) between snake case, camel case and pascal case in Python. Inspired by [Humps](https://github.com/domchristie/humps) for Node.
 
