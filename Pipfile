@@ -11,6 +11,7 @@ bumpversion = "*"
 pytest = "*"
 "flake8" = "*"
 pytest-cov = "*"
+"pathlib2" = "*"
 
 [requires]
 python_version = "3.6"
