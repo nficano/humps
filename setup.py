@@ -14,7 +14,7 @@ with open('LICENSE') as readme_file:
 
 setup(
     name='pyhumps', version='0.3.0', author='Nick Ficano',
-    author_email='nficano@gmail.com', packages=['pyhumps'],
+    author_email='nficano@gmail.com', packages=['humps'],
     url='https://github.com/nficano/humps', license=license,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
