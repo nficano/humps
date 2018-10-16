@@ -15,5 +15,5 @@ $ pre-commit install
 3. Push to your fork.
 4. Submit a pull request.
 
-Others will give constructive feedback. This is a time for discussion and improvements, and making the necessary 
+Others will give constructive feedback. This is a time for discussion and improvements, and making the necessary
 changes will be required before we can merge the contribution.

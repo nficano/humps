@@ -33,20 +33,20 @@ def test_decamelize_keys():
             'symbol': 'AAL',
             'last_price': 31.78,
             'change_pct': 2.8146,
-            'implied_volatality': 0.482
+            'implied_volatality': 0.482,
         },
         {
             'symbol': 'LBTYA',
             'last_price': 25.95,
             'change_pct': 2.6503,
-            'implied_volatality': 0.7287
+            'implied_volatality': 0.7287,
         },
         {
             'symbol': 'LBTYK',
             'change_pct': 2.5827,
             'last_price': 25.42,
-            'implied_volatality': 0.4454
-        }
+            'implied_volatality': 0.4454,
+        },
     ]
 
     assert humps.decamelize_keys(camelcase_keys) == expected
