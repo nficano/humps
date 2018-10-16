@@ -1,14 +1,14 @@
-## Humps
+# Humps
 
 Convert strings (and dictionary keys) between snake case, camel case and pascal case in Python. Inspired by [Humps](https://github.com/domchristie/humps) for Node.
 
-### Why
+## Why
 
 When creating an API, the authors will often use the character casing convention that is idiomatic to their backend language, thus forcing consumers developing in a different language (with different style guidelines) to tolerate inconsistent casing styles, hardcode mappings between the two, or lug around some case conversion utility functions.
 
 While none of these are inherently wrong, it would still be nice to have a dependable solution just a few keystrokes away.
 
-### Installation
+## Installation
 
 To install humps, simply use pipenv (or pip, of course):
 
@@ -16,9 +16,9 @@ To install humps, simply use pipenv (or pip, of course):
 $ pipenv install pyhumps
 ```
 
-### Usage
+## Usage
 
-#### Converting strings
+### Converting strings
 
 ```python
 import humps
@@ -28,54 +28,22 @@ humps.decamelize('rubyTuesdays')  # ruby_tuesdays
 humps.pascalize('red_robin')  # RedRobin
 ```
 
-#### Converting dictionary keys
+### Converting dictionary keys
 
 ```python
 import humps
 
-humps.decamelize_keys([
-  {
-    'symbol': 'AAL',
-    'lastPrice': 31.78,
-    'changePct': 2.8146,
-    'impliedVolatality': 0.482,
-  },
-  {
-  'symbol': 'LBTYA',
-  'lastPrice': 25.95,
-  'changePct': 2.6503,
-  'impliedVolatality': 0.7287,
-  },
-  {
-    'symbol': 'LBTYK',
-    'changePct': 2.5827,
-    'lastPrice': 25.42,
-    'impliedVolatality': 0.4454,
-  },
-])
-# [
-#     {
-#         'symbol': 'AAL',
-#         'last_price': 31.78,
-#         'change_pct': 2.8146,
-#         'implied_volatality': 0.482
-#     },
-#     {
-#         'symbol': 'LBTYA',
-#         'last_price': 25.95,
-#         'change_pct': 2.6503,
-#         'implied_volatality': 0.7287
-#     },
-#     {
-#         'symbol': 'LBTYK',
-#         'change_pct': 2.5827,
-#         'last_price': 25.42,
-#         'implied_volatality': 0.4454
-#     }
-# ]
+array = [{'attrOne': 'foo'}, {'attrOne': 'bar'}]
+humps.decamelize_keys(array) # [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
+
+array = [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
+humps.camelize_keys(array)  # [{'attrOne': 'foo'}, {'attrOne': 'bar'}]
+
+array = [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
+humps.pascalize_keys(array)  # [{'AttrOne': 'foo'}, {'AttrOne': 'bar'}]
 ```
 
-#### API Methods
+### API Methods
 ```python
 import humps
 
@@ -92,4 +60,20 @@ humps.pascalize_keys(obj_or_list)
 humps.is_camelcase(string)
 humps.is_pascalcase(string)
 humps.is_snakecase(string)
+```
+
+## Example Usage
+```python
+# pythonic_boto3.py
+import humps
+import boto3
+
+def api(service, decamelize=True, *args, **kwargs):
+    service, func = service.split(':')
+    client = boto3.client(service)
+    kwargs = humps.pascalize_keys(kwargs)
+    response = getattr(client, func)(*args, **kwargs)
+    return (depascalize_keys(response) if decamelize else response)
+
+api('s3:download_file', bucket='bucket', key='hello.png', filename='hello.png')
 ```
