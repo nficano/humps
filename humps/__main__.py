@@ -1,6 +1,8 @@
 import re
 from collections import Mapping
 
+from humps.compat import unicode
+
 UNDERSCORE_RE = re.compile(r'[\-_\s]+(.?)')
 SPLIT_RE = re.compile(r'([A-Z][^A-Z]*)')
 
@@ -23,7 +25,7 @@ def camelize_keys(obj):
 
 
 def camelize(string):
-    if string.isnumeric():
+    if unicode(string).isnumeric():
         return string
     return ''.join([
         string[0].lower(),
