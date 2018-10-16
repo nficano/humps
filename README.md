@@ -52,28 +52,23 @@ array = [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
 humps.pascalize_keys(array)  # [{'AttrOne': 'foo'}, {'AttrOne': 'bar'}]
 ```
 
-### API Methods
+### Checking character casing
 ```python
 import humps
 
-humps.camelize(string)
-humps.decamelize(string)
-humps.depascalize(string)
-humps.pascalize(string)
-
-humps.camelize_keys(obj_or_list)
-humps.decamelize_keys(obj_or_list)
-humps.depascalize_keys(obj_or_list)
-humps.pascalize_keys(obj_or_list)
-
-humps.is_camelcase(string)
-humps.is_pascalcase(string)
-humps.is_snakecase(string)
+humps.is_camelcase('illWearYourGranddadsClothes')  # True
+humps.is_pascalcase('ILookIncredible')  # True
+humps.is_snakecase('im_in_this_big_ass_coat')  # True
+humps.is_camelcase('from_that_thrift_shop')  # False
+humps.is_snakecase('downTheRoad')  # False
 ```
 
-### How I use humps
+### How personally I use humps
+
+#### Pythonic Boto3 API Wrapper
+
 ```python
-# pythonic_boto3.py
+# aws.py
 import humps
 import boto3
 
@@ -85,4 +80,12 @@ def api(service, decamelize=True, *args, **kwargs):
     return (depascalize_keys(response) if decamelize else response)
 
 api('s3:download_file', bucket='bucket', key='hello.png', filename='hello.png')
+```
+
+#### Flask-RESTful Adaptive responses
+
+```python
+# I will post a code snippet for this soon. It's a decorator that checks if
+# the request was arguments were passed as camelcase or snake_case, it then
+# rewrites the response to match the consumer's preferred casing style.
 ```
