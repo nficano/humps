@@ -1,5 +1,6 @@
 import humps
 
+
 def test_converting_strings():
     assert humps.camelize('jack_in_the_box') == 'jackInTheBox'
     assert humps.decamelize('rubyTuesdays') == 'ruby_tuesdays'
