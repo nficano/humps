@@ -63,8 +63,10 @@ humps.is_camelcase('from_that_thrift_shop')  # False
 humps.is_snakecase('downTheRoad')  # False
 ```
 
-### How personally I use humps
 <hr>
+
+### How personally I use humps
+
 #### Pythonic Boto3 API Wrapper
 
 ```python
