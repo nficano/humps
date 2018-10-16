@@ -1,0 +1,22 @@
+language: python
+cache:
+  - apt
+  - pip
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+  - "3.5-dev"  # 3.5 development branch
+  - "3.6"
+  - "3.6-dev"  # 3.6 development branch
+  - "3.7-dev"  # 3.7 development branch
+install: "make"
+script:
+  - make ci
+before_install:
+  - pip install pipenv flake8 --upgrade
+sudo: false
+after_success:
+  coveralls
+notifications:
+  slack: watchcloud:rNoT5kJJakPqwLSKuev6oa4C
