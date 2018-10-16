@@ -1,8 +1,8 @@
 import re
 from collections import Mapping
 
-UNDERSCORE_RE = re.compile('[\-_\s]+(.?)')
-SPLIT_RE = re.compile('([A-Z][^A-Z]*)')
+UNDERSCORE_RE = re.compile(r'[\-_\s]+(.?)')
+SPLIT_RE = re.compile(r'([A-Z][^A-Z]*)')
 
 
 def _process_keys(obj, fn):
