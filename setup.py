@@ -6,8 +6,12 @@ try:
 except ImportError:
     from distutils.core import setup
 
-with open('README.md') as readme_file:
-    readme = readme_file.read()
+try:
+    import pypandoc
+    readme = pypandoc.convert('README.md', 'rst')
+except(IOError, ImportError):
+    with open('README.md') as readme_file:
+        readme = readme_file.read()
 
 with open('LICENSE') as readme_file:
     license = readme_file.read()
