@@ -28,7 +28,6 @@ setup(
         'Operating System :: Microsoft', 'Operating System :: POSIX',
         'Operating System :: Unix',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
@@ -38,6 +37,5 @@ setup(
         '🐫  Convert strings (and dictionary keys) between snake case, camel '
         'case and pascal case in Python. Inspired by Humps for Node'
     ),
-    long_description_content_type='text/markdown',
     long_description=readme, zip_safe=True,
 )
