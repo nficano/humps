@@ -13,6 +13,7 @@ pytest = "*"
 pytest-cov = "*"
 "pathlib2" = "*"
 scandir = "*"
+coveralls = "*"
 
 [requires]
 python_version = "3.6"
