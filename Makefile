@@ -34,3 +34,4 @@ release:
 	twine upload dist/*
 	bumpversion --no-tag patch
 	git push origin master --tags
+	clean
