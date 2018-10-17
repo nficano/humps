@@ -34,5 +34,6 @@ setup(
         '🐫  Convert strings (and dictionary keys) between snake case, camel '
         'case and pascal case in Python. Inspired by Humps for Node'
     ),
+    long_description_content_type='text/markdown',
     long_description=readme, zip_safe=True,
 )
