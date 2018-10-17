@@ -43,13 +43,13 @@ humps.pascalize('red_robin')  # RedRobin
 import humps
 
 array = [{'attrOne': 'foo'}, {'attrOne': 'bar'}]
-humps.decamelize_keys(array) # [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
+humps.decamelize(array) # [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
 
 array = [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
-humps.camelize_keys(array)  # [{'attrOne': 'foo'}, {'attrOne': 'bar'}]
+humps.camelize(array)  # [{'attrOne': 'foo'}, {'attrOne': 'bar'}]
 
 array = [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
-humps.pascalize_keys(array)  # [{'AttrOne': 'foo'}, {'AttrOne': 'bar'}]
+humps.pascalize(array)  # [{'AttrOne': 'foo'}, {'AttrOne': 'bar'}]
 ```
 
 ### Checking character casing
@@ -77,9 +77,9 @@ import boto3
 def api(service, decamelize=True, *args, **kwargs):
     service, func = service.split(':')
     client = boto3.client(service)
-    kwargs = humps.pascalize_keys(kwargs)
+    kwargs = humps.pascalize(kwargs)
     response = getattr(client, func)(*args, **kwargs)
-    return (depascalize_keys(response) if decamelize else response)
+    return (depascalize(response) if decamelize else response)
 
 api('s3:download_file', bucket='bucket', key='hello.png', filename='hello.png')
 ```

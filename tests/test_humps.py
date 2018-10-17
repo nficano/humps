@@ -49,4 +49,4 @@ def test_decamelize_keys():
         },
     ]
 
-    assert humps.decamelize_keys(camelcase_keys) == expected
+    assert humps.decamelize(camelcase_keys) == expected

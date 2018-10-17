@@ -15,11 +15,6 @@ from humps.__main__ import decamelize
 from humps.__main__ import depascalize
 from humps.__main__ import pascalize
 
-from humps.__main__ import camelize_keys
-from humps.__main__ import decamelize_keys
-from humps.__main__ import depascalize_keys
-from humps.__main__ import pascalize_keys
-
 from humps.__main__ import is_camelcase
 from humps.__main__ import is_pascalcase
 from humps.__main__ import is_snakecase

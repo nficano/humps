@@ -2,12 +2,14 @@
 # flake8: noqa
 import sys
 
-PY2 = sys.version_info[0] == 2
-PY3 = sys.version_info[0] == 3
+_ver = sys.version_info
+is_py2 = (_ver[0] == 2)
+is_py3 = (_ver[0] == 3)
 
 
-def uni(s):
-    if PY2:
-        return unicode(s)
-    if PY3:
-        return s
+if is_py2:
+    str = unicode
+
+
+if is_py3:
+    str = str
