@@ -88,6 +88,6 @@ api('s3:download_file', bucket='bucket', key='hello.png', filename='hello.png')
 
 ```python
 # I will post a code snippet for this soon. It's a decorator that checks if
-# the request was arguments were passed as camelcase or snake_case, it then
+# the request arguments were passed as camelcase or snake_case, it then
 # rewrites the response to match the consumer's preferred casing style.
 ```
