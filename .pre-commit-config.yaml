@@ -33,8 +33,10 @@ repos:
       name: Check for Python style guideline violations
 
     - id: check-yaml
-      exclude: 'ansible/.*/templates/.*.ya?ml'
       name: Validate YAML
+
+      id: fix-encoding-pragma
+      name: Check for UTF-8 Encoding
 
     - id: check-json
       name: Validate JSON

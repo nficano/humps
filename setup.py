@@ -24,14 +24,15 @@ setup(
         'Operating System :: Microsoft', 'Operating System :: POSIX',
         'Operating System :: Unix',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python', 'Topic :: Utilities', ],
     description=(
-        '🐫  Underscore-to-camelCase converter (and vice versa) for strings '
-        'and dict keys in Python.'
+        '🐫  Convert strings (and dictionary keys) between snake case, camel '
+        'case and pascal case in Python. Inspired by Humps for Node'
     ),
     long_description=readme, zip_safe=True,
 )
