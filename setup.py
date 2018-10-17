@@ -13,7 +13,7 @@ with open('LICENSE') as readme_file:
     license = readme_file.read()
 
 setup(
-    name='pyhumps', version='1.0.2', author='Nick Ficano',
+    name='pyhumps', version='1.0.3', author='Nick Ficano',
     author_email='nficano@gmail.com', packages=['humps'],
     url='https://github.com/nficano/humps', license=license,
     classifiers=[
