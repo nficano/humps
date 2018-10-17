@@ -7,6 +7,7 @@ except ImportError:
     from distutils.core import setup
 
 try:
+    import pypandoc
     readme = pypandoc.convert('README.md', 'rst')
 except(IOError, ImportError):
     with open('README.md') as readme_file:
