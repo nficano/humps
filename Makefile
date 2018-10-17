@@ -31,7 +31,7 @@ install: clean
 
 release:
 	python setup.py sdist bdist_wheel
-	twine upload dist/*
+	twine upload dist/* --verbose
 	bumpversion --no-tag patch
 	git push origin master --tags
 	clean
