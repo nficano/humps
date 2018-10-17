@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pypandoc = "*"
 
 [dev-packages]
 pre-commit = "*"
@@ -16,6 +15,8 @@ pytest-cov = "*"
 scandir = "*"
 coveralls = "*"
 twine = "*"
+ipython = "*"
+pypandoc = "*"
 
 [requires]
 python_version = "3.6"

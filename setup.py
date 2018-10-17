@@ -7,7 +7,6 @@ except ImportError:
     from distutils.core import setup
 
 try:
-    import pypandoc
     readme = pypandoc.convert('README.md', 'rst')
 except(IOError, ImportError):
     with open('README.md') as readme_file:
@@ -40,7 +39,6 @@ setup(
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
-
     description=(
         '🐫  Convert strings (and dictionary keys) between snake case, camel '
         'case and pascal case in Python. Inspired by Humps for Node'
