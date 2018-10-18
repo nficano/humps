@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./artwork/humps.png" alt="Humps logo" width="245" height="118">
+  <img src="https://raw.githubusercontent.com/nficano/humps/master/artwork/humps.png" alt="Humps logo" width="245" height="118">
   <div align="center">
     <a href="https://travis-ci.org/nficano/humps"><img src="https://travis-ci.org/nficano/humps.svg?branch=master" /></a>
     <a href="https://coveralls.io/github/nficano/humps?branch=master"><img src="https://coveralls.io/repos/github/nficano/humps/badge.svg?branch=master#cachebust" /></a>
