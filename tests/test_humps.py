@@ -18,7 +18,7 @@ def test_conditionals():
 
 
 def test_numeric():
-    assert humps.camelize(123) == 123
+    assert humps.camelize(1234) == 1234
     assert humps.decamelize(123) == 123
     assert humps.pascalize(123) == 123
 
