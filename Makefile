@@ -28,10 +28,3 @@ clean-pyc:
 
 install: clean
 	python setup.py install
-
-release:
-	python setup.py sdist bdist_wheel
-	twine upload dist/* --verbose
-	bumpversion --no-tag patch
-	git push origin master --tags
-	clean
