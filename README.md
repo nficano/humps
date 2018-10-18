@@ -3,7 +3,7 @@
   <div align="center">
     <a href="https://travis-ci.org/nficano/humps"><img src="https://travis-ci.org/nficano/humps.svg?branch=master" /></a>
     <a href="https://coveralls.io/github/nficano/humps?branch=master"><img src="https://coveralls.io/repos/github/nficano/humps/badge.svg?branch=master#cachebust" /></a>
-    <a href="https://pypi.org/project/pyhumps/"><img src="https://img.shields.io/pypi/v/pyhumps.svg" alt="pypi"></a>
+    <a href="https://pypi.org/project/pyhumps/"><img src="https://img.shields.io/pypi/v/pyhumps.svg#cachebust" alt="pypi"></a>
     <a href="https://pypi.python.org/pypi/pyhumps/"><img src="https://img.shields.io/pypi/pyversions/pyhumps.svg" /></a>
   </div>
 </p>
