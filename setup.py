@@ -3,7 +3,6 @@
 """This module contains setup instructions for pyhumps."""
 import codecs
 import os
-import re
 import sys
 from shutil import rmtree
 
@@ -44,12 +43,6 @@ class UploadCommand(Command):
         self.status('Uploading the package to PyPI via Twine ...')
         os.system('twine upload dist/*')
         sys.exit()
-
-
-def remove_html_tags(text):
-    """Remove html tags from a string"""
-    clean = re.compile('<.*?>')
-    return re.sub(clean, '', text)
 
 
 with open('README.md') as fh:
