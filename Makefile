@@ -6,7 +6,7 @@ help:
 
 ci:
 	pip install pipenv
-	pipenv install --dev
+	pipenv install --dev --skip-lock
 	pipenv run flake8
 	pipenv run pytest --cov-report term-missing --cov=humps
 

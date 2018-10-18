@@ -16,7 +16,6 @@ scandir = "*"
 coveralls = "*"
 twine = "*"
 ipython = "*"
-pypandoc = "*"
 
 [requires]
 python_version = "3.6"
