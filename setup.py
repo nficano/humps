@@ -1,17 +1,50 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import re
 """This module contains setup instructions for pyhumps."""
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+import setuptools
+import re
+import os
+import codecs
 
-with open('README.md') as readme_file:
-    readme = readme_file.read()
+from shutil import rmtree
+from setuptools import find_packages
+from setuptools import setup
+from setuptools import Command
 
-with open('LICENSE') as readme_file:
-    license = readme_file.read()
+here = os.path.abspath(os.path.dirname(__file__))
+
+with codecs.open(os.path.join(here, 'README.md'), encoding='utf-8') as fh:
+    long_description = '\n' + fh.read()
+
+
+class UploadCommand(Command):
+    """Support setup.py publish."""
+
+    description = "Build and publish the package."
+    user_options = []
+
+    @staticmethod
+    def status(s):
+        """Prints things in bold."""
+        print("\033[1m{0}\033[0m".format(s))
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        try:
+            self.status("Removing previous builds ...")
+            rmtree(os.path.join(here, "dist"))
+        except FileNotFoundError:
+            pass
+        self.status("Building Source distribution ...")
+        os.system("{0} setup.py sdist bdist_wheel".format(sys.executable))
+        self.status("Uploading the package to PyPI via Twine ...")
+        os.system("twine upload dist/*")
+        sys.exit()
 
 
 def remove_html_tags(text):
@@ -20,22 +53,23 @@ def remove_html_tags(text):
     return re.sub(clean, '', text)
 
 
+with open('README.md') as fh:
+    long_description = fh.read()
+
 setup(
-    name='pyhumps', version='1.0.15', author='Nick Ficano',
-    author_email='nficano@gmail.com', packages=['humps'],
-    url='https://github.com/nficano/humps', license=license,
+    name='pyhumps',
+    version='1.0.15',
+    author='Nick Ficano',
+    author_email='nficano@gmail.com',
+    packages=['humps'],
+    url='https://github.com/nficano/humps',
+    license='MIT',
+    package_data={
+        '': ['LICENSE'],
+    },
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
-        'Environment :: Console', 'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
-        'Natural Language :: English',
-        'Operating System :: MacOS :: MacOS X',
-        'Operating System :: POSIX',
-        'Operating System :: POSIX :: BSD',
-        'Operating System :: POSIX :: Linux',
-        'Operating System :: Microsoft :: Windows',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
@@ -49,6 +83,9 @@ setup(
         '🐫  Convert strings (and dictionary keys) between snake case, camel '
         'case and pascal case in Python. Inspired by Humps for Node'
     ),
+    include_package_data=True,
     long_description_content_type='text/markdown',
-    long_description=remove_html_tags(readme), zip_safe=True,
+    long_description=long_description,
+    zip_safe=True,
+    cmdclass={'upload': UploadCommand},
 )
