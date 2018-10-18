@@ -19,7 +19,7 @@ def remove_html_tags(text):
     return re.sub(clean, '', text)
 
 setup(
-    name='pyhumps', version='1.0.12', author='Nick Ficano',
+    name='pyhumps', version='1.0.13', author='Nick Ficano',
     author_email='nficano@gmail.com', packages=['humps'],
     url='https://github.com/nficano/humps', license=license,
     classifiers=[
