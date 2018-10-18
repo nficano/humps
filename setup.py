@@ -13,10 +13,12 @@ with open('README.md') as readme_file:
 with open('LICENSE') as readme_file:
     license = readme_file.read()
 
+
 def remove_html_tags(text):
     """Remove html tags from a string"""
     clean = re.compile('<.*?>')
     return re.sub(clean, '', text)
+
 
 setup(
     name='pyhumps', version='1.0.13', author='Nick Ficano',
