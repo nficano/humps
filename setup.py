@@ -57,7 +57,7 @@ with open('README.md') as fh:
 
 setup(
     name='pyhumps',
-    version='1.0.16',
+    version='1.0.17',
     author='Nick Ficano',
     author_email='nficano@gmail.com',
     packages=['humps'],
