@@ -1,20 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import re
 """This module contains setup instructions for pyhumps."""
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
-try:
-    import pypandoc
-    readme = pypandoc.convert('README.md', 'rst')
-except(IOError, ImportError):
-    with open('README.md') as readme_file:
-        readme = readme_file.read()
+with open('README.md') as readme_file:
+    readme = readme_file.read()
 
 with open('LICENSE') as readme_file:
     license = readme_file.read()
+
+def remove_html_tags(text):
+    """Remove html tags from a string"""
+    clean = re.compile('<.*?>')
+    return re.sub(clean, '', text)
 
 setup(
     name='pyhumps', version='1.0.11', author='Nick Ficano',
@@ -37,6 +39,7 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
@@ -44,5 +47,6 @@ setup(
         '🐫  Convert strings (and dictionary keys) between snake case, camel '
         'case and pascal case in Python. Inspired by Humps for Node'
     ),
-    long_description=readme, zip_safe=True,
+    long_description_content_type='text/markdown',
+    long_description=remove_html_tags(readme), zip_safe=True,
 )
