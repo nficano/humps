@@ -44,10 +44,6 @@ class UploadCommand(Command):
         os.system('twine upload dist/*')
         sys.exit()
 
-
-with open('README.md') as fh:
-    long_description = fh.read()
-
 setup(
     name='pyhumps',
     version='1.0.19',
