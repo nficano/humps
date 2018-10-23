@@ -17,6 +17,10 @@ def pascalize(str_or_iter):
 
     :param str_or_iter:
       A string or iterable.
+    :type str_or_iter: Union[list, dict, str]
+    :rtype: Union[list, dict, str]
+    :returns:
+      pascalized string, dictionary, or list of dictionaries.
 
     """
     if str(str_or_iter).isnumeric():
@@ -32,6 +36,10 @@ def camelize(str_or_iter):
 
     :param str_or_iter:
       A string or iterable.
+    :type str_or_iter: Union[list, dict, str]
+    :rtype: Union[list, dict, str]
+    :returns:
+      camelized string, dictionary, or list of dictionaries.
 
     """
     if str(str_or_iter).isnumeric():
@@ -50,6 +58,10 @@ def decamelize(str_or_iter):
 
     :param str_or_iter:
       A string or iterable.
+    :type str_or_iter: Union[list, dict, str]
+    :rtype: Union[list, dict, str]
+    :returns:
+      snake cased string, dictionary, or list of dictionaries.
 
     """
     if str(str_or_iter).isnumeric():
@@ -65,6 +77,10 @@ def depascalize(str_or_iter):
 
     :param str_or_iter:
       A string or iterable.
+    :type str_or_iter: Union[list, dict, str]
+    :rtype: Union[list, dict, str]
+    :returns:
+      snake cased string, dictionary, or list of dictionaries.
 
     """
     return decamelize(str_or_iter)
@@ -75,7 +91,10 @@ def is_camelcase(str_or_iter):
 
     :param str_or_iter:
       A string or iterable.
-
+    :type str_or_iter: Union[list, dict, str]
+    :rtype: bool
+    :returns:
+      True/False whether string or iterable is camel case
     """
     return str_or_iter == camelize(str_or_iter)
 
@@ -85,7 +104,10 @@ def is_pascalcase(str_or_iter):
 
     :param str_or_iter:
       A string or iterable.
-
+    :type str_or_iter: Union[list, dict, str]
+    :rtype: bool
+    :returns:
+      True/False whether string or iterable is pascal case
     """
     return str_or_iter == pascalize(str_or_iter)
 
@@ -95,7 +117,10 @@ def is_snakecase(str_or_iter):
 
     :param str_or_iter:
       A string or iterable.
-
+    :type str_or_iter: Union[list, dict, str]
+    :rtype: bool
+    :returns:
+      True/False whether string or iterable is snake case
     """
     return str_or_iter == decamelize(str_or_iter)
 
