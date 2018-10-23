@@ -4,7 +4,6 @@ This module contains all the core logic for humps.
 """
 import re
 import sys
-
 from collections import Mapping
 
 _ver = sys.version_info
@@ -13,7 +12,7 @@ is_py3 = (_ver[0] == 3)
 
 
 if is_py2:
-    str = unicode
+    str = unicode  # noqa
 
 
 if is_py3:
