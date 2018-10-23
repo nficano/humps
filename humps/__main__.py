@@ -60,14 +60,14 @@ def decamelize(str_or_iter):
         return separate_words(str_or_iter).lower()
 
 
-def depascalize(string):
+def depascalize(str_or_iter):
     """Converts a string, dict, or list of dicts to snake case.
 
     :param str_or_iter:
       A string or iterable.
 
     """
-    return decamelize(string)
+    return decamelize(str_or_iter)
 
 
 def is_camelcase(str_or_iter):
