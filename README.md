@@ -86,7 +86,7 @@ api('s3:download_file', bucket='bucket', key='hello.png', filename='hello.png')
 ```
 
 
-#### API Wrapper Returning Decorator
+#### Returning API Decorator
 
 ```python
 from functools import wraps
