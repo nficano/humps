@@ -65,7 +65,7 @@ humps.is_snakecase('downTheRoad')  # False
 
 <hr>
 
-### How personally I use humps
+### My Recipes
 
 #### Pythonic Boto3 API Wrapper
 
@@ -81,8 +81,77 @@ def api(service, decamelize=True, *args, **kwargs):
     response = getattr(client, func)(*args, **kwargs)
     return (depascalize(response) if decamelize else response)
 
+# usage
 api('s3:download_file', bucket='bucket', key='hello.png', filename='hello.png')
 ```
+
+
+#### API Wrapper Returning Decorator
+
+```python
+from functools import wraps
+import enum
+
+import humps
+
+
+class Flags(enum.Enum):
+    RAW = 1
+    JSON = 2
+    STATUS_CODE = 4
+    OK = 8
+    DECAMELIZE = 16
+
+
+def returning(api_exception=Exception):
+    def decorator(fn):
+        @wraps(fn)
+        def wrapper(*args, **kwargs):
+            flags = []
+            if 'returning' in kwargs:
+                returning = kwargs.pop('returning')
+                if isinstance(returning, Flags):
+                    flags.append(returning)
+                else:
+                    flags.extend(returning)
+            flags.extend([a for a in args if isinstance(a, Flags)])
+            args = [a for a in args if not isinstance(a, Flags)]
+            resp = fn(*args, **kwargs)
+            is_json = resp.headers.get('Content-Type') == 'application/json'
+            if not flags or Flags.RAW in flags:
+                return resp
+            if Flags.OK in flags:
+                return resp.ok
+            if Flags.STATUS_CODE in flags:
+                return resp.status_code
+            if Flags.JSON in flags:
+                if not resp.ok:
+                    raise api_exception(resp.json() if is_json else resp.text)
+                if Flags.DECAMELIZE in flags:
+                    return humps.decamelize(resp.json())
+                else:
+                    return resp.json()
+        return wrapper
+    return decorator
+
+# usage
+import requests
+
+@returning()
+def get_todo(todo_id):
+  return requests.get('https://jsonplaceholder.typicode.com/posts/1')
+
+get_todo(1) # <Response [200]> (unaltered response object)
+
+get_todo(1, Flags.JSON) # {'userId': 1, 'id': 1, 'title': '...'}
+
+get_todo(1, Flags.JSON, Flags.DECAMELIZE) # {'user_id': 1, 'id': 1, 'title': '...'}
+
+get_todo(1, Flags.OK) # True
+
+get_todo(1, Flags.STATUS_CODE) # 200
+```
+
 
 #### Flask-RESTful Adaptive Responses
 
