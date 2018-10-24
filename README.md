@@ -86,7 +86,7 @@ api('s3:download_file', bucket='bucket', key='hello.png', filename='hello.png')
 ```
 
 
-#### Returning API Decorator
+#### Generic API Response Return Mangler
 
 ```python
 from functools import wraps
