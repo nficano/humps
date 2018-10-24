@@ -65,7 +65,7 @@ humps.is_snakecase('downTheRoad')  # False
 
 <hr>
 
-### Recipes
+## Recipes
 
 #### Pythonic Boto3 API Wrapper
 
