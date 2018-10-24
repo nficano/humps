@@ -141,7 +141,7 @@ import requests
 def get_todo(todo_id):
   return requests.get('https://jsonplaceholder.typicode.com/posts/1')
 
-get_todo(1) # <Response [200]> (unaltered response object)
+get_todo(1) # <Response [200]> (true method return)
 
 get_todo(1, Flags.JSON) # {'userId': 1, 'id': 1, 'title': '...'}
 
