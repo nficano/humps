@@ -68,7 +68,7 @@ humps.decamelize('APIResponse')  # api_response
 
 <hr>
 
-## Recipes
+## Humps Cookbook
 
 #### Pythonic Boto3 API Wrapper
 
