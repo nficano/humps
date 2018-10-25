@@ -47,7 +47,7 @@ class UploadCommand(Command):
 
 setup(
     name='pyhumps',
-    version='1.1.1',
+    version='1.1.2',
     author='Nick Ficano',
     author_email='nficano@gmail.com',
     packages=['humps'],
