@@ -61,6 +61,9 @@ humps.is_pascalcase('ILookIncredible')  # True
 humps.is_snakecase('im_in_this_big_ass_coat')  # True
 humps.is_camelcase('from_that_thrift_shop')  # False
 humps.is_snakecase('downTheRoad')  # False
+
+# what about abbrevations, acronyms, and initialisms? No problem!
+humps.decamelize('APIResponse')  # api_response
 ```
 
 <hr>

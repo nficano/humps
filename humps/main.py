@@ -13,18 +13,17 @@ is_py3 = (_ver[0] == 3)
 
 if is_py2:
     str = unicode  # noqa
-
-
-if is_py3:
+elif is_py3:
     str = str
 
 
 UNDERSCORE_RE = re.compile(r'[\-_\s]+(.?)')
 SPLIT_RE = re.compile(r'([A-Z][^A-Z]*)')
+ACRONYM_RE = re.compile(r'([A-Z]+)(?=[A-Z])')
 
 
 def pascalize(str_or_iter):
-    """Converts a string, dict, or list of dicts to pascal case.
+    """Convert a string, dict, or list of dicts to pascal case.
 
     :param str_or_iter:
       A string or iterable.
@@ -43,7 +42,7 @@ def pascalize(str_or_iter):
 
 
 def camelize(str_or_iter):
-    """Converts a string, dict, or list of dicts to camel case.
+    """Convert a string, dict, or list of dicts to camel case.
 
     :param str_or_iter:
       A string or iterable.
@@ -65,7 +64,7 @@ def camelize(str_or_iter):
 
 
 def decamelize(str_or_iter):
-    """Converts a string, dict, or list of dicts to snake case.
+    """Convert a string, dict, or list of dicts to snake case.
 
     :param str_or_iter:
       A string or iterable.
@@ -80,11 +79,11 @@ def decamelize(str_or_iter):
     elif isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, decamelize)
     else:
-        return separate_words(str_or_iter).lower()
+        return separate_words(_fix_abbrevations(str_or_iter)).lower()
 
 
 def depascalize(str_or_iter):
-    """Converts a string, dict, or list of dicts to snake case.
+    """Convert a string, dict, or list of dicts to snake case.
 
     :param str_or_iter:
       A string or iterable.
@@ -98,7 +97,7 @@ def depascalize(str_or_iter):
 
 
 def is_camelcase(str_or_iter):
-    """Determines if a string, dict, or list of dicts is camel case.
+    """Determine if a string, dict, or list of dicts is camel case.
 
     :param str_or_iter:
       A string or iterable.
@@ -111,7 +110,7 @@ def is_camelcase(str_or_iter):
 
 
 def is_pascalcase(str_or_iter):
-    """Determines if a string, dict, or list of dicts is pascal case.
+    """Determine if a string, dict, or list of dicts is pascal case.
 
     :param str_or_iter:
       A string or iterable.
@@ -124,7 +123,7 @@ def is_pascalcase(str_or_iter):
 
 
 def is_snakecase(str_or_iter):
-    """Determines if a string, dict, or list of dicts is snake case.
+    """Determine if a string, dict, or list of dicts is snake case.
 
     :param str_or_iter:
       A string or iterable.
@@ -143,6 +142,21 @@ def _process_keys(str_or_iter, fn):
         return {fn(k): _process_keys(v, fn) for k, v in str_or_iter.items()}
     else:
         return str_or_iter
+
+
+def _fix_abbrevations(string):
+    """Rewrite incorrectly cased acronyms, initialisms, and abbrevations,
+    allowing them to be decamelized correctly. For example, given the string
+    "APIReponse", this function is responsible for ensuring the output is
+    "api_response" instead of "a_p_i_response".
+
+    :param str string:
+        A string that may contain an incorrectly cased abbrevation.
+    :rtype: str
+    :returns:
+        A rewritten string that is safe for decamelization.
+    """
+    return ACRONYM_RE.sub(lambda m: m.group(0).title(), string)
 
 
 def separate_words(string, separator='_', split=SPLIT_RE):

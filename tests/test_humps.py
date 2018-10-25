@@ -9,6 +9,11 @@ def test_converting_strings():
     assert humps.pascalize('red_robin') == 'RedRobin'
 
 
+def test_camelized_acronyms():
+    assert humps.decamelize('PERatio') == 'pe_ratio'
+    assert humps.decamelize('HTTPResponse') == 'http_response'
+
+
 def test_conditionals():
     assert humps.is_camelcase('jackInTheBox')
     assert humps.is_pascalcase('RedRobin')
