@@ -11,9 +11,10 @@ is_py2 = (_ver[0] == 2)
 is_py3 = (_ver[0] == 3)
 
 
-if is_py2:
+if is_py2:  # pragma: no cover
     str = unicode  # noqa
-elif is_py3:
+
+if is_py3:
     str = str
 
 
