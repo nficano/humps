@@ -14,7 +14,7 @@ is_py3 = (_ver[0] == 3)
 if is_py2:  # pragma: no cover
     str = unicode  # noqa
 
-if is_py3:
+if is_py3:  # pragma: no cover
     str = str
 
 
