@@ -11,12 +11,6 @@
 
 Convert strings (and dictionary keys) between snake case, camel case and pascal case in Python. Inspired by [Humps](https://github.com/domchristie/humps) for Node.
 
-## Why
-
-When creating an API, the authors will often use the character casing convention that is idiomatic to their backend language, thus forcing consumers developing in a different language (with different style guidelines) to tolerate inconsistent casing styles, hardcode mappings between the two, or lug around some case conversion utility functions.
-
-While none of these are inherently wrong, it would still be nice to have a dependable solution just a few keystrokes away.
-
 ## Installation
 
 To install humps, simply use pipenv (or pip, of course):
