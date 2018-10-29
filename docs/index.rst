@@ -55,6 +55,13 @@ Features
 - Extensively Documented Source Code
 - No Third-Party Dependencies
 
+Installation
+------------
+
+To install humps, simply use pipenv (or pip, of course)::
+
+    $ pipenv install humps
+
 The API Documentation / Guide
 -----------------------------
 
