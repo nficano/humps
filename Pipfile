@@ -16,6 +16,7 @@ scandir = "*"
 coveralls = "*"
 twine = "*"
 ipython = "*"
+sphinx = "*"
 
 [requires]
 python_version = "3.6"
