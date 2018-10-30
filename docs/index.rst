@@ -34,26 +34,24 @@ Release v\ |version|. (:ref:`Installation <install>`)
 **Introducing Humps for Python! Let's see it in action**::
 
     >>> import humps
-    >>> humps.camelize('jack_in_the_box')  # jackInTheBox
-    >>> humps.decamelize('rubyTuesdays')  # ruby_tuesdays
-    >>> humps.pascalize('red_robin')  # RedRobin
-    >>> humps.decamelize('APIResponse')  # api_response
-    >>> humps.decamelize([{'attrOne': 'foo'}, {'attrOne': 'bar'}]) # [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
-
+    >>>
+    >>> humps.decamelize('illWearYourGranddadsClothes')   # 'ill_wear_your_granddads_clothes'
+    >>> humps.camelize('i_look_incredible')               # 'iLookIncredible'
+    >>> humps.pascalize('im_in_this_big_ass_coat')        # 'ImInThisBigAssCoat'
+    >>> humps.decamelize('FROMThatThriftShop')            # 'from_that_thrift_shop'
+    >>> humps.decamelize([{'downTheRoad': True}])         # [{'down_the_road': True}]
 
 Features
 --------
 
-- Convert from snake_case to camelcase and pascal case
-- Convert from camelcase to snake_case and pascal case
-- Convert from pascal case to camelcase and snake_case
-- Supports strings
-- Supports recursively converting dictionary keys
+- Convert from ``snake_case`` to ``camelCase`` and ``PascalCase``
+- Convert from ``camelCase`` to ``snake_case`` and ``PascalCase``
+- Convert from ``PascalCase`` to  ``snake_case`` and ``camelCase``
+- Supports recursively converting ``dict`` keys
 - Supports recursively converting lists of dictionaries
-- Gracefully handles abbrevations and acronyms
-- Includes functions to test if a string, dict, or list of dicts is camelcase, snake_case, and pascal case.
-- Extensively Documented Source Code
-- No Third-Party Dependencies
+- Gracefully handles abbrevations, acronyms, and initialisms
+- Extensively documented source code
+- No third-party dependencies
 
 Installation
 ------------
@@ -65,7 +63,7 @@ To install humps, simply use pipenv (or pip, of course)::
 The API Documentation / Guide
 -----------------------------
 
-If you are looking for information on a specific function, class, or method, this part of the documentation is for you.
+If you are looking for information on a specific function, this part of the documentation is for you.
 
 .. toctree::
    :maxdepth: 2
