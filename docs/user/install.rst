@@ -7,7 +7,7 @@ This part of the documentation covers the installation of humps.
 
 To install humps, simply use pipenv (or pip, of course)::
 
-    $ pipenv install humps
+    $ pipenv install pyhumps
 
 Get the Source Code
 -------------------
