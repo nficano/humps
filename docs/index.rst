@@ -34,7 +34,6 @@ Release v\ |version|. (:ref:`Installation <install>`)
 **Introducing Humps for Python! Let's see it in action**::
 
     >>> import humps
-    >>>
     >>> humps.decamelize('illWearYourGranddadsClothes')   # 'ill_wear_your_granddads_clothes'
     >>> humps.camelize('i_look_incredible')               # 'iLookIncredible'
     >>> humps.pascalize('im_in_this_big_ass_coat')        # 'ImInThisBigAssCoat'
