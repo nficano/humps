@@ -44,6 +44,13 @@ def test_camelize():
                 'url': 'https://media.io/image',
             },
         ],
+        'other': [
+            {
+                '_fallback_url': 'https://media.io/image',
+                '__scrubber_media___url_': 'https://media.io/image',
+                '_url__': 'https://media.io/image',
+            },
+        ],
     })
     expected = {
         'videos': [
@@ -58,6 +65,13 @@ def test_camelize():
                 'fallbackUrl': 'https://media.io/image',
                 'scrubberMediaUrl': 'https://media.io/image',
                 'url': 'https://media.io/image',
+            },
+        ],
+        'other': [
+            {
+                '_fallbackUrl': 'https://media.io/image',
+                '__scrubberMediaUrl_': 'https://media.io/image',
+                '_url__': 'https://media.io/image',
             },
         ],
     }
@@ -80,6 +94,13 @@ def test_pascalize():
                 'url': 'https://media.io/image',
             },
         ],
+        'other': [
+            {
+                '_fallback_url': 'https://media.io/image',
+                '__scrubber_media___url_': 'https://media.io/image',
+                '_url__': 'https://media.io/image',
+            },
+        ],
     })
     expected = {
         'Videos': [
@@ -94,6 +115,13 @@ def test_pascalize():
                 'FallbackUrl': 'https://media.io/image',
                 'ScrubberMediaUrl': 'https://media.io/image',
                 'Url': 'https://media.io/image',
+            },
+        ],
+        'Other': [
+            {
+                '_FallbackUrl': 'https://media.io/image',
+                '__ScrubberMediaUrl_': 'https://media.io/image',
+                '_Url__': 'https://media.io/image',
             },
         ],
     }
@@ -115,10 +143,10 @@ def test_decamelize():
             'impliedVolatality': 0.7287,
         },
         {
-            'symbol': 'LBTYK',
-            'changePct': 2.5827,
-            'lastPrice': 25.42,
-            'impliedVolatality': 0.4454,
+            '_symbol': 'LBTYK',
+            'changePct_': 2.5827,
+            '_lastPrice__': 25.42,
+            '__impliedVolatality_': 0.4454,
         },
     ])
     expected = [
@@ -135,10 +163,10 @@ def test_decamelize():
             'implied_volatality': 0.7287,
         },
         {
-            'symbol': 'LBTYK',
-            'change_pct': 2.5827,
-            'last_price': 25.42,
-            'implied_volatality': 0.4454,
+            '_symbol': 'LBTYK',
+            'change_pct_': 2.5827,
+            '_last_price__': 25.42,
+            '__implied_volatality_': 0.4454,
         },
     ]
 

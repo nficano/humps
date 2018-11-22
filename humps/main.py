@@ -10,17 +10,16 @@ _ver = sys.version_info
 is_py2 = (_ver[0] == 2)
 is_py3 = (_ver[0] == 3)
 
-
 if is_py2:  # pragma: no cover
     str = unicode  # noqa
 
 if is_py3:  # pragma: no cover
     str = str
 
-
-UNDERSCORE_RE = re.compile(r'[\-_\s]+(.?)')
-SPLIT_RE = re.compile(r'([A-Z][^A-Z]*)')
 ACRONYM_RE = re.compile(r'([A-Z]+)(?=[A-Z])')
+PASCAL_RE = re.compile(r'([^\-_\s]+)')
+SPLIT_RE = re.compile(r'([A-Z][^A-Z]*)')
+UNDERSCORE_RE = re.compile(r'([^\-_\s])[\-_\s]+([^\-_\s])')
 
 
 def pascalize(str_or_iter):
@@ -34,12 +33,17 @@ def pascalize(str_or_iter):
       pascalized string, dictionary, or list of dictionaries.
 
     """
-    if str(str_or_iter).isnumeric():
-        return str_or_iter
-    elif isinstance(str_or_iter, (list, Mapping)):
+    if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, pascalize)
-    else:
-        return ''.join([str_or_iter[0].upper(), camelize(str_or_iter[1:])])
+
+    s = str(str_or_iter)
+    if s.isnumeric():
+        return str_or_iter
+
+    s = camelize(
+        PASCAL_RE.sub(lambda m: m.group(1)[0].upper() + m.group(1)[1:], s),
+    )
+    return s[0].upper() + s[1:]
 
 
 def camelize(str_or_iter):
@@ -53,15 +57,17 @@ def camelize(str_or_iter):
       camelized string, dictionary, or list of dictionaries.
 
     """
-    if str(str_or_iter).isnumeric():
-        return str_or_iter
-    elif isinstance(str_or_iter, (list, Mapping)):
+    if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, camelize)
-    else:
-        return ''.join([
-            str_or_iter[0].lower(),
-            UNDERSCORE_RE.sub(lambda m: m.group(1).upper(), str_or_iter)[1:],
-        ])
+
+    s = str(str_or_iter)
+    if s.isnumeric():
+        return str_or_iter
+
+    return ''.join([
+        s[0].lower(),
+        UNDERSCORE_RE.sub(lambda m: m.group(1) + m.group(2).upper(), s[1:]),
+    ])
 
 
 def decamelize(str_or_iter):
@@ -75,12 +81,14 @@ def decamelize(str_or_iter):
       snake cased string, dictionary, or list of dictionaries.
 
     """
-    if str(str_or_iter).isnumeric():
-        return str_or_iter
-    elif isinstance(str_or_iter, (list, Mapping)):
+    if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, decamelize)
-    else:
-        return separate_words(_fix_abbrevations(str_or_iter)).lower()
+
+    s = str(str_or_iter)
+    if s.isnumeric():
+        return str_or_iter
+
+    return separate_words(_fix_abbrevations(s)).lower()
 
 
 def depascalize(str_or_iter):
@@ -160,5 +168,5 @@ def _fix_abbrevations(string):
     return ACRONYM_RE.sub(lambda m: m.group(0).title(), string)
 
 
-def separate_words(string, separator='_', split=SPLIT_RE):
-    return separator.join([s for s in SPLIT_RE.split(string) if s != ''])
+def separate_words(string, separator='_', split=SPLIT_RE.split):
+    return separator.join(s for s in split(string) if s)
