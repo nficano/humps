@@ -14,22 +14,39 @@ def test_camelized_acronyms():
     assert humps.decamelize('HTTPResponse') == 'http_response'
     assert humps.decamelize('_HTTPResponse') == '_http_response'
     assert humps.decamelize('_HTTPResponse__') == '_http_response__'
-    assert humps.decamelize('BIP73') == 'bip73'
+    assert humps.decamelize('BIP73') == 'BIP73'
     assert humps.decamelize('BIP72b') == 'bip72b'
 
 
 def test_conditionals():
-    assert humps.is_camelcase('jackInTheBox')
     assert humps.is_pascalcase('RedRobin')
+    assert humps.is_snakecase('RedRobin') is False
+    assert humps.is_camelcase('RedRobin') is False
+
     assert humps.is_snakecase('ruby_tuesdays')
     assert humps.is_camelcase('ruby_tuesdays') is False
+    assert humps.is_pascalcase('jackInTheBox') is False
+
+    assert humps.is_camelcase('jackInTheBox')
     assert humps.is_snakecase('jackInTheBox') is False
+    assert humps.is_pascalcase('jackInTheBox') is False
+
+    assert humps.is_camelcase('API')
+    assert humps.is_pascalcase('API')
+    assert humps.is_snakecase('API')
 
 
 def test_numeric():
     assert humps.camelize(1234) == 1234
     assert humps.decamelize(123) == 123
     assert humps.pascalize(123) == 123
+
+
+def test_upper():
+    assert humps.camelize('API') == 'API'
+    assert humps.decamelize('API') == 'API'
+    assert humps.pascalize('API') == 'API'
+    assert humps.depascalize('API') == 'API'
 
 
 def test_camelize():
@@ -153,10 +170,12 @@ def test_decamelize():
             '__impliedVolatality_': 0.4454,
         },
         {
-            'API': 'test_acronym',
-            '_API_': 'test_acronym',
-            '__API__': 'test_acronym',
+            'API': 'test_upper',
+            '_API_': 'test_upper',
+            '__API__': 'test_upper',
             'APIResponse': 'test_acronym',
+            '_APIResponse_': 'test_acronym',
+            '__APIResponse__': 'test_acronym',
             'ruby_tuesdays': 'ruby_tuesdays',
         },
     ])
@@ -180,10 +199,12 @@ def test_decamelize():
             '__implied_volatality_': 0.4454,
         },
         {
-            'api': 'test_acronym',
-            '_api_': 'test_acronym',
-            '__api__': 'test_acronym',
+            'API': 'test_upper',
+            '_API_': 'test_upper',
+            '__API__': 'test_upper',
             'api_response': 'test_acronym',
+            '_api_response_': 'test_acronym',
+            '__api_response__': 'test_acronym',
             'ruby_tuesdays': 'ruby_tuesdays',
         },
     ]
@@ -212,10 +233,12 @@ def test_depascalize():
             '__ImpliedVolatality_': 0.4454,
         },
         {
-            'API': 'test_acronym',
-            '_API_': 'test_acronym',
-            '__API__': 'test_acronym',
+            'API': 'test_upper',
+            '_API_': 'test_upper',
+            '__API__': 'test_upper',
             'APIResponse': 'test_acronym',
+            '_APIResponse_': 'test_acronym',
+            '__APIResponse__': 'test_acronym',
             'ruby_tuesdays': 'ruby_tuesdays',
         },
     ])
@@ -239,10 +262,12 @@ def test_depascalize():
             '__implied_volatality_': 0.4454,
         },
         {
-            'api': 'test_acronym',
-            '_api_': 'test_acronym',
-            '__api__': 'test_acronym',
+            'API': 'test_upper',
+            '_API_': 'test_upper',
+            '__API__': 'test_upper',
             'api_response': 'test_acronym',
+            '_api_response_': 'test_acronym',
+            '__api_response__': 'test_acronym',
             'ruby_tuesdays': 'ruby_tuesdays',
         },
     ]

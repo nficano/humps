@@ -40,6 +40,9 @@ def pascalize(str_or_iter):
     if s.isnumeric():
         return str_or_iter
 
+    if s.isupper():
+        return str_or_iter
+
     s = camelize(
         PASCAL_RE.sub(lambda m: m.group(1)[0].upper() + m.group(1)[1:], s),
     )
@@ -64,6 +67,9 @@ def camelize(str_or_iter):
     if s.isnumeric():
         return str_or_iter
 
+    if s.isupper():
+        return str_or_iter
+
     return ''.join([
         s[0].lower(),
         UNDERSCORE_RE.sub(lambda m: m.group(1) + m.group(2).upper(), s[1:]),
@@ -86,6 +92,9 @@ def decamelize(str_or_iter):
 
     s = str(str_or_iter)
     if s.isnumeric():
+        return str_or_iter
+
+    if s.isupper():
         return str_or_iter
 
     return separate_words(_fix_abbrevations(s)).lower()
