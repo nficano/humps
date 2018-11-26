@@ -16,9 +16,9 @@ if is_py2:  # pragma: no cover
 if is_py3:  # pragma: no cover
     str = str
 
-ACRONYM_RE = re.compile(r'([A-Z]+)(?=[A-Z])')
+ACRONYM_RE = re.compile(r'([A-Z]+)(?=[A-Z][a-z])')
 PASCAL_RE = re.compile(r'([^\-_\s]+)')
-SPLIT_RE = re.compile(r'([A-Z][^A-Z]*)')
+SPLIT_RE = re.compile(r'([\-_\s]*[A-Z][^A-Z\-_\s]+[\-_\s]*)')
 UNDERSCORE_RE = re.compile(r'([^\-_\s])[\-_\s]+([^\-_\s])')
 
 
