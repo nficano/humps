@@ -71,6 +71,14 @@ def test_camelize():
                 '__scrubber_media___url_': 'https://media.io/image',
                 '_url__': 'https://media.io/image',
             },
+            {
+                'API': 'test_upper',
+                '_API_': 'test_upper',
+                '__API__': 'test_upper',
+                'APIResponse': 'test_acronym',
+                '_APIResponse_': 'test_acronym',
+                '__APIResponse__': 'test_acronym',
+            },
         ],
     })
     expected = {
@@ -93,6 +101,14 @@ def test_camelize():
                 '_fallbackUrl': 'https://media.io/image',
                 '__scrubberMediaUrl_': 'https://media.io/image',
                 '_url__': 'https://media.io/image',
+            },
+            {
+                'API': 'test_upper',
+                '_API_': 'test_upper',
+                '__API__': 'test_upper',
+                'APIResponse': 'test_acronym',
+                '_APIResponse_': 'test_acronym',
+                '__APIResponse__': 'test_acronym',
             },
         ],
     }
@@ -121,6 +137,14 @@ def test_pascalize():
                 '__scrubber_media___url_': 'https://media.io/image',
                 '_url__': 'https://media.io/image',
             },
+            {
+                'API': 'test_upper',
+                '_API_': 'test_upper',
+                '__API__': 'test_upper',
+                'APIResponse': 'test_acronym',
+                '_APIResponse_': 'test_acronym',
+                '__APIResponse__': 'test_acronym',
+            },
         ],
     })
     expected = {
@@ -143,6 +167,14 @@ def test_pascalize():
                 '_FallbackUrl': 'https://media.io/image',
                 '__ScrubberMediaUrl_': 'https://media.io/image',
                 '_Url__': 'https://media.io/image',
+            },
+            {
+                'API': 'test_upper',
+                '_API_': 'test_upper',
+                '__API__': 'test_upper',
+                'APIResponse': 'test_acronym',
+                '_APIResponse_': 'test_acronym',
+                '__APIResponse__': 'test_acronym',
             },
         ],
     }
