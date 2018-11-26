@@ -14,6 +14,8 @@ def test_camelized_acronyms():
     assert humps.decamelize('HTTPResponse') == 'http_response'
     assert humps.decamelize('_HTTPResponse') == '_http_response'
     assert humps.decamelize('_HTTPResponse__') == '_http_response__'
+    assert humps.decamelize('BIP73') == 'bip73'
+    assert humps.decamelize('BIP72b') == 'bip72b'
 
 
 def test_conditionals():
