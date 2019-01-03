@@ -8,7 +8,7 @@ __title__ = 'pyhumps'
 __version__ = '1.2.3'
 __author__ = 'Nick Ficano'
 __license__ = 'MIT License'
-__copyright__ = 'Copyright 2018 Nick Ficano'
+__copyright__ = 'Copyright 2019 Nick Ficano'
 
 from humps.main import camelize
 from humps.main import decamelize
