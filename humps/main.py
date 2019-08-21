@@ -5,7 +5,6 @@ This module contains all the core logic for humps.
 import re
 import sys
 from collections import Mapping
-from functools import wraps
 
 _ver = sys.version_info
 is_py2 = (_ver[0] == 2)
@@ -23,22 +22,19 @@ SPLIT_RE = re.compile(r'([\-_\s]*[A-Z0-9]+[^A-Z\-_\s]+[\-_\s]*)')
 UNDERSCORE_RE = re.compile(r'([^\-_\s])[\-_\s]+([^\-_\s])')
 
 
-def pascalize(str_or_iter, depth=None):
+def pascalize(str_or_iter):
     """Convert a string, dict, or list of dicts to pascal case.
 
     :param str_or_iter:
       A string or iterable.
     :type str_or_iter: Union[list, dict, str]
-    :param depth:
-      Depth level for recursion
-    :type depth: Optional[int]
     :rtype: Union[list, dict, str]
     :returns:
       pascalized string, dictionary, or list of dictionaries.
 
     """
     if isinstance(str_or_iter, (list, Mapping)):
-        return _process_keys(str_or_iter, pascalize, depth=depth)
+        return _process_keys(str_or_iter, pascalize)
 
     s = str(str_or_iter)
     if s.isnumeric():
@@ -53,22 +49,19 @@ def pascalize(str_or_iter, depth=None):
     return s[0].upper() + s[1:]
 
 
-def camelize(str_or_iter, depth=None):
+def camelize(str_or_iter):
     """Convert a string, dict, or list of dicts to camel case.
 
     :param str_or_iter:
       A string or iterable.
     :type str_or_iter: Union[list, dict, str]
-    :param depth:
-      Depth level for recursion.
-    :type depth: Optional[int]
     :rtype: Union[list, dict, str]
     :returns:
       camelized string, dictionary, or list of dictionaries.
 
     """
     if isinstance(str_or_iter, (list, Mapping)):
-        return _process_keys(str_or_iter, camelize, depth=depth)
+        return _process_keys(str_or_iter, camelize)
 
     s = str(str_or_iter)
     if s.isnumeric():
@@ -83,22 +76,19 @@ def camelize(str_or_iter, depth=None):
     ])
 
 
-def decamelize(str_or_iter, depth=None):
+def decamelize(str_or_iter):
     """Convert a string, dict, or list of dicts to snake case.
 
     :param str_or_iter:
       A string or iterable.
     :type str_or_iter: Union[list, dict, str]
-    :param depth:
-      Depth level for recursion.
-    :type depth: Optional[int]
     :rtype: Union[list, dict, str]
     :returns:
       snake cased string, dictionary, or list of dictionaries.
 
     """
     if isinstance(str_or_iter, (list, Mapping)):
-        return _process_keys(str_or_iter, decamelize, depth=depth)
+        return _process_keys(str_or_iter, decamelize)
 
     s = str(str_or_iter)
     if s.isnumeric():
@@ -110,111 +100,64 @@ def decamelize(str_or_iter, depth=None):
     return separate_words(_fix_abbrevations(s)).lower()
 
 
-def depascalize(str_or_iter, depth=None):
+def depascalize(str_or_iter):
     """Convert a string, dict, or list of dicts to snake case.
 
     :param str_or_iter:
       A string or iterable.
     :type str_or_iter: Union[list, dict, str]
-    :param depth:
-      Depth level for recursion.
-    :type depth: Optional[int]
     :rtype: Union[list, dict, str]
     :returns:
       snake cased string, dictionary, or list of dictionaries.
 
     """
-    return decamelize(str_or_iter, depth=depth)
+    return decamelize(str_or_iter)
 
 
-def _check_depth(f):
-    @wraps(f)
-    def wrapper(*args, **kwargs):
-        depth = kwargs.get('depth')
-
-        if isinstance(depth, int):
-            if depth < 1:
-                raise ValueError('`depth` must be greater then or equal 1')
-        return f(*args, **kwargs)
-
-    return wrapper
-
-
-@_check_depth
-def is_camelcase(str_or_iter, depth=None):
+def is_camelcase(str_or_iter):
     """Determine if a string, dict, or list of dicts is camel case.
 
     :param str_or_iter:
       A string or iterable.
     :type str_or_iter: Union[list, dict, str]
-    :param depth:
-      Depth level for recursion.
-    :type depth: Optional[int]
     :rtype: bool
     :returns:
       True/False whether string or iterable is camel case
-    :raises ValueError:
-      If ``depth`` is instance of a :class:`int` and least then 1
     """
-    return str_or_iter == camelize(str_or_iter, depth=depth)
+    return str_or_iter == camelize(str_or_iter)
 
 
-@_check_depth
-def is_pascalcase(str_or_iter, depth=None):
+def is_pascalcase(str_or_iter):
     """Determine if a string, dict, or list of dicts is pascal case.
 
     :param str_or_iter:
       A string or iterable.
     :type str_or_iter: Union[list, dict, str]
-    :param depth:
-      Depth level for recursion
-    :type depth: Optional[int]
     :rtype: bool
     :returns:
       True/False whether string or iterable is pascal case
-    :raises ValueError:
-      If ``depth`` is instance of a :class:`int` and least then 1
     """
-    return str_or_iter == pascalize(str_or_iter, depth=depth)
+    return str_or_iter == pascalize(str_or_iter)
 
 
-@_check_depth
-def is_snakecase(str_or_iter, depth=None):
+def is_snakecase(str_or_iter):
     """Determine if a string, dict, or list of dicts is snake case.
 
     :param str_or_iter:
       A string or iterable.
     :type str_or_iter: Union[list, dict, str]
-    :param depth:
-      Depth level for recursion
-    :type depth: Optional[int]
     :rtype: bool
     :returns:
       True/False whether string or iterable is snake case
-    :raises ValueError:
-      If ``depth`` is instance of a :class:`int` and least then 1
     """
-    return str_or_iter == decamelize(str_or_iter, depth=depth)
+    return str_or_iter == decamelize(str_or_iter)
 
 
-def _process_keys(str_or_iter, fn, depth=None):
-    if isinstance(depth, int):
-        if depth < 1:
-            return str_or_iter
-
+def _process_keys(str_or_iter, fn):
     if isinstance(str_or_iter, list):
-        return [
-            _process_keys(k, fn, depth=depth)
-            for k in str_or_iter
-        ]
+        return [_process_keys(k, fn) for k in str_or_iter]
     elif isinstance(str_or_iter, Mapping):
-        if isinstance(depth, int):
-            depth -= 1
-
-        return {
-            fn(k): _process_keys(v, fn, depth=depth)
-            for k, v in str_or_iter.items()
-        }
+        return {fn(k): _process_keys(v, fn) for k, v in str_or_iter.items()}
     else:
         return str_or_iter
 
