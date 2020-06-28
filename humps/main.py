@@ -4,7 +4,12 @@ This module contains all the core logic for humps.
 """
 import re
 import sys
-from collections import Mapping
+
+try:
+    from collections.abc import Mapping
+except ImportError:
+    from collections import Mapping
+
 
 _ver = sys.version_info
 is_py2 = (_ver[0] == 2)
