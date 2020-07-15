@@ -1,3 +1,38 @@
+dev:
+	pipenv install --dev
+
+pipenv:
+	pip install pipenv
+	pipenv install --dev
+
+deploy-patch: clean requirements bumpversion-patch upload clean
+
+deploy-minor: clean requirements bumpversion-minor upload clean
+
+deploy-major: clean requirements bumpversion-major upload clean
+
+requirements:
+	pipenv_to_requirements
+
+bumpversion-patch:
+	bumpversion patch
+	git push
+	git push --tags
+
+bumpversion-minor:
+	bumpversion minor
+	git push
+	git push --tags
+
+bumpversion-major:
+	bumpversion major
+	git push
+	git push --tags
+
+upload:
+	python setup.py sdist bdist_wheel
+	twine upload dist/*
+
 help:
 	@echo "clean - remove all build, test, coverage and Python artifacts"
 	@echo "clean-build - remove build artifacts"
