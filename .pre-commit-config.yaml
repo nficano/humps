@@ -19,6 +19,13 @@ repos:
       - id: check-case-conflict
         name: 'Check for filesystem character case conflicts'
       - id: detect-private-key
+        name: 'Check for cleartext private keys stored'
+      - id: flake8
+        additional_dependencies:
+          - flake8-mutable
+          - flake8-type-annotations
+          - flake8-eradicate
+          - flake8-bugbear
         name: 'Check for Python style guideline violations'
       - id: check-json
         name: 'Validate JSON'
