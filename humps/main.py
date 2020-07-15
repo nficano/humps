@@ -12,8 +12,8 @@ except ImportError:
 
 
 _ver = sys.version_info
-is_py2 = (_ver[0] == 2)
-is_py3 = (_ver[0] == 3)
+is_py2 = _ver[0] == 2
+is_py3 = _ver[0] == 3
 
 if is_py2:  # pragma: no cover
     str = unicode  # noqa
@@ -21,10 +21,10 @@ if is_py2:  # pragma: no cover
 if is_py3:  # pragma: no cover
     str = str
 
-ACRONYM_RE = re.compile(r'([A-Z]+)(?=[A-Z][a-z])')
-PASCAL_RE = re.compile(r'([^\-_\s]+)')
-SPLIT_RE = re.compile(r'([\-_\s]*[A-Z0-9]+[^A-Z\-_\s]+[\-_\s]*)')
-UNDERSCORE_RE = re.compile(r'([^\-_\s])[\-_\s]+([^\-_\s])')
+ACRONYM_RE = re.compile(r"([A-Z]+)(?=[A-Z][a-z])")
+PASCAL_RE = re.compile(r"([^\-_\s]+)")
+SPLIT_RE = re.compile(r"([\-_\s]*[A-Z0-9]+[^A-Z\-_\s]+[\-_\s]*)")
+UNDERSCORE_RE = re.compile(r"([^\-_\s])[\-_\s]+([^\-_\s])")
 
 
 def pascalize(str_or_iter):
@@ -75,10 +75,14 @@ def camelize(str_or_iter):
     if s.isupper():
         return str_or_iter
 
-    return ''.join([
-        s[0].lower() if not s[:2].isupper() else s[0],
-        UNDERSCORE_RE.sub(lambda m: m.group(1) + m.group(2).upper(), s[1:]),
-    ])
+    return "".join(
+        [
+            s[0].lower() if not s[:2].isupper() else s[0],
+            UNDERSCORE_RE.sub(
+                lambda m: m.group(1) + m.group(2).upper(), s[1:]
+            ),
+        ]
+    )
 
 
 def decamelize(str_or_iter):
@@ -182,5 +186,5 @@ def _fix_abbrevations(string):
     return ACRONYM_RE.sub(lambda m: m.group(0).title(), string)
 
 
-def separate_words(string, separator='_', split=SPLIT_RE.split):
+def separate_words(string, separator="_", split=SPLIT_RE.split):
     return separator.join(s for s in split(string) if s)

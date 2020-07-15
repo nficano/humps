@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/nficano/humps/master/artwork/humps.png" alt="Humps logo" width="245" height="118">
   <div align="center">
-    <a href="https://travis-ci.org/nficano/humps"><img src="https://travis-ci.org/nficano/humps.svg?branch=master" /></a>  
+    <a href="https://travis-ci.org/nficano/humps"><img src="https://travis-ci.org/nficano/humps.svg?branch=master" /></a>
     <a href="http://humps.readthedocs.io/en/latest/?badge=latest"><img src="https://readthedocs.org/projects/humps/badge/?version=latest" /></a>
     <a href="https://coveralls.io/github/nficano/humps?branch=master"><img src="https://coveralls.io/repos/github/nficano/humps/badge.svg?branch=master#cachebus" /></a>
     <a href="https://pypi.org/project/pyhumps/"><img src="https://img.shields.io/pypi/v/pyhumps.svg#cachebust" alt="pypi"></a>
