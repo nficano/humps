@@ -1,70 +1,46 @@
-exclude: 'setup.cfg'
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v1.2.1-1
-  hooks:
-    - id: pretty-format-json
-      name: Pretty format JSON
+  - repo: 'https://github.com/pre-commit/pre-commit-hooks'
+    rev: v2.4.0
+    hooks:
+      - id: pretty-format-json
+        name: 'Pretty format JSON'
+        args:
+          - '--no-sort-keys'
+          - '--autofix'
+          - '--indent=2'
+      - id: trailing-whitespace
+        name: 'Fix trailing whitespace'
+      - id: end-of-file-fixer
+        name: 'Fix missing EOF'
+      - id: check-executables-have-shebangs
+        name: 'Check exeutables for shebangs'
+      - id: check-merge-conflict
+        name: 'Check for merge conflict fragments'
+      - id: check-case-conflict
+        name: 'Check for filesystem character case conflicts'
+      - id: detect-private-key
+        name: 'Check for cleartext private keys stored'
+      - id: flake8
+        additional_dependencies:
+          - flake8-mutable
+          - flake8-type-annotations
+          - flake8-eradicate
+          - flake8-bugbear
+        name: 'Check for Python style guideline violations'
+      - id: check-json
+        name: 'Validate JSON'
+      - id: check-ast
+        name: 'Check Python abstract syntax tree'
+  - repo: 'https://github.com/asottile/reorder_python_imports'
+    rev: v1.8.0
+    hooks:
+      - id: reorder-python-imports
+        name: 'Reorder Python imports'
+  - repo: https://github.com/psf/black
+    rev: stable
+    hooks:
+    - id: black
+      name: 'Ruthlessly format Python'
+      language_version: python3.7
       args:
-        - --no-sort-keys
-
-    - id: trailing-whitespace
-      name: Fix trailing whitespace
-
-    - id: end-of-file-fixer
-      name: Fix missing EOF
-
-    - id: check-executables-have-shebangs
-      name: Check exeutables for shebangs
-
-    - id: check-added-large-files
-      name: Check for any large files added
-
-    - id: check-merge-conflict
-      name: Check for merge conflict fragments
-
-    - id: check-case-conflict
-      name: Check for filesystem character case conflicts
-
-    - id: detect-private-key
-      name: Check for cleartext private keys stored
-
-    - id: flake8
-      name: Check for Python style guideline violations
-
-    - id: check-yaml
-      name: Validate YAML
-
-      id: fix-encoding-pragma
-      name: Check for utf-8 encoding
-
-    - id: check-json
-      name: Validate JSON
-
-    - id: check-ast
-      name: Check Python abstract syntax tree
-
-    - id: double-quote-string-fixer
-      name: Replace Python " with '
-
-    - id: autopep8-wrapper
-      args:
-        - --in-place
-        - --aggressive
-        - --aggressive
-        - --experimental
-      name: Pretty format Python
-
-- repo: https://github.com/asottile/reorder_python_imports
-  sha: v1.1.1
-  hooks:
-    - id: reorder-python-imports
-      name: Reorder Python imports
-
-- repo: https://github.com/asottile/add-trailing-comma
-  sha: v0.7.0
-  hooks:
-    - id: add-trailing-comma
-      name: Fix Python trailing commas
-      args:
-        - --py36-plus
+        - '--line-length=79'
