@@ -9,6 +9,7 @@ We love contributions from everyone. By participating in this project, you agree
 
 ```bash
 $ pipenv install --dev
+$ pipenv shell
 $ pre-commit install
 ```
 
