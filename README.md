@@ -83,3 +83,6 @@ def api(service, decamelize=True, *args, **kwargs):
 # usage
 api('s3:download_file', bucket='bucket', key='hello.png', filename='hello.png')
 ```
+
+## Documentation
+https://docs.contour.so/nficano/humps/README
