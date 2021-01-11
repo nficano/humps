@@ -10,8 +10,10 @@
   </div>
 </p>
 
-
 Convert strings (and dictionary keys) between snake case, camel case and pascal case in Python. Inspired by [Humps](https://github.com/domchristie/humps) for Node.
+
+## Jan 11, 2021: An open call for contributors:
+Please email me at nficano@gmail.com.
 
 ## Installation
 
@@ -20,6 +22,8 @@ To install humps, simply use pipenv (or pip, of course):
 ```bash
 $ pipenv install pyhumps
 ```
+
+## API Reference and User Guide available on [Countor](https://docs.contour.so/nficano/humps/README)
 
 ## Usage
 
@@ -83,6 +87,3 @@ def api(service, decamelize=True, *args, **kwargs):
 # usage
 api('s3:download_file', bucket='bucket', key='hello.png', filename='hello.png')
 ```
-
-## Documentation
-https://docs.contour.so/nficano/humps/README
