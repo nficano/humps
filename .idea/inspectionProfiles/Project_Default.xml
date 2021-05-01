@@ -1,0 +1,93 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="78">
+            <item index="0" class="java.lang.String" itemvalue="beautifulsoup4" />
+            <item index="1" class="java.lang.String" itemvalue="scipy" />
+            <item index="2" class="java.lang.String" itemvalue="librato_metrics" />
+            <item index="3" class="java.lang.String" itemvalue="pytest" />
+            <item index="4" class="java.lang.String" itemvalue="scikit_learn" />
+            <item index="5" class="java.lang.String" itemvalue="yelp" />
+            <item index="6" class="java.lang.String" itemvalue="requests" />
+            <item index="7" class="java.lang.String" itemvalue="numpy" />
+            <item index="8" class="java.lang.String" itemvalue="pygal" />
+            <item index="9" class="java.lang.String" itemvalue="pandas" />
+            <item index="10" class="java.lang.String" itemvalue="slackclient" />
+            <item index="11" class="java.lang.String" itemvalue="python_dateutil" />
+            <item index="12" class="java.lang.String" itemvalue="Flask" />
+            <item index="13" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="14" class="java.lang.String" itemvalue="flask" />
+            <item index="15" class="java.lang.String" itemvalue="protobuf" />
+            <item index="16" class="java.lang.String" itemvalue="grpcio" />
+            <item index="17" class="java.lang.String" itemvalue="ddtrace" />
+            <item index="18" class="java.lang.String" itemvalue="s3transfer" />
+            <item index="19" class="java.lang.String" itemvalue="botocore" />
+            <item index="20" class="java.lang.String" itemvalue="google-resumable-media" />
+            <item index="21" class="java.lang.String" itemvalue="tenacity" />
+            <item index="22" class="java.lang.String" itemvalue="google-cloud-storage" />
+            <item index="23" class="java.lang.String" itemvalue="google-cloud-core" />
+            <item index="24" class="java.lang.String" itemvalue="msgpack" />
+            <item index="25" class="java.lang.String" itemvalue="google-auth" />
+            <item index="26" class="java.lang.String" itemvalue="pyotp" />
+            <item index="27" class="java.lang.String" itemvalue="Babel" />
+            <item index="28" class="java.lang.String" itemvalue="Flask-JWT" />
+            <item index="29" class="java.lang.String" itemvalue="atomicwrites" />
+            <item index="30" class="java.lang.String" itemvalue="py" />
+            <item index="31" class="java.lang.String" itemvalue="keystoneauth1" />
+            <item index="32" class="java.lang.String" itemvalue="rax-default-network-flags-python-novaclient-ext" />
+            <item index="33" class="java.lang.String" itemvalue="python-mandrill-inbound" />
+            <item index="34" class="java.lang.String" itemvalue="pywebpush" />
+            <item index="35" class="java.lang.String" itemvalue="contextlib2" />
+            <item index="36" class="java.lang.String" itemvalue="sentry-sdk" />
+            <item index="37" class="java.lang.String" itemvalue="rackspace-novaclient" />
+            <item index="38" class="java.lang.String" itemvalue="stripe" />
+            <item index="39" class="java.lang.String" itemvalue="xlrd" />
+            <item index="40" class="java.lang.String" itemvalue="ijson" />
+            <item index="41" class="java.lang.String" itemvalue="attrs" />
+            <item index="42" class="java.lang.String" itemvalue="configparser" />
+            <item index="43" class="java.lang.String" itemvalue="ua-parser" />
+            <item index="44" class="java.lang.String" itemvalue="oslo.serialization" />
+            <item index="45" class="java.lang.String" itemvalue="python-keystoneclient" />
+            <item index="46" class="java.lang.String" itemvalue="PyJWT" />
+            <item index="47" class="java.lang.String" itemvalue="networkx" />
+            <item index="48" class="java.lang.String" itemvalue="os-networksv2-python-novaclient-ext" />
+            <item index="49" class="java.lang.String" itemvalue="pluggy" />
+            <item index="50" class="java.lang.String" itemvalue="httplib2" />
+            <item index="51" class="java.lang.String" itemvalue="mandrill" />
+            <item index="52" class="java.lang.String" itemvalue="os-diskconfig-python-novaclient-ext" />
+            <item index="53" class="java.lang.String" itemvalue="wcwidth" />
+            <item index="54" class="java.lang.String" itemvalue="importlib-metadata" />
+            <item index="55" class="java.lang.String" itemvalue="Jinja2" />
+            <item index="56" class="java.lang.String" itemvalue="XlsxWriter" />
+            <item index="57" class="java.lang.String" itemvalue="oslo.i18n" />
+            <item index="58" class="java.lang.String" itemvalue="rax-scheduled-images-python-novaclient-ext" />
+            <item index="59" class="java.lang.String" itemvalue="selenium" />
+            <item index="60" class="java.lang.String" itemvalue="pytest-cov" />
+            <item index="61" class="java.lang.String" itemvalue="zipp" />
+            <item index="62" class="java.lang.String" itemvalue="msgpack-python" />
+            <item index="63" class="java.lang.String" itemvalue="coverage" />
+            <item index="64" class="java.lang.String" itemvalue="rackspace-auth-openstack" />
+            <item index="65" class="java.lang.String" itemvalue="pyrax" />
+            <item index="66" class="java.lang.String" itemvalue="six" />
+            <item index="67" class="java.lang.String" itemvalue="google-auth-oauthlib" />
+            <item index="68" class="java.lang.String" itemvalue="oslo.utils" />
+            <item index="69" class="java.lang.String" itemvalue="packaging" />
+            <item index="70" class="java.lang.String" itemvalue="futures" />
+            <item index="71" class="java.lang.String" itemvalue="pathlib2" />
+            <item index="72" class="java.lang.String" itemvalue="oslo.config" />
+            <item index="73" class="java.lang.String" itemvalue="apns2" />
+            <item index="74" class="java.lang.String" itemvalue="os-virtual-interfacesv2-python-novaclient-ext" />
+            <item index="75" class="java.lang.String" itemvalue="ip-associations-python-novaclient-ext" />
+            <item index="76" class="java.lang.String" itemvalue="keyring" />
+            <item index="77" class="java.lang.String" itemvalue="python-novaclient" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="TypeScriptValidateTypes" enabled="false" level="ERROR" enabled_by_default="false" />
+  </profile>
+</component>

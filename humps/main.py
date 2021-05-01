@@ -5,11 +5,11 @@ This module contains all the core logic for humps.
 import re
 import sys
 
+
 try:
     from collections.abc import Mapping
 except ImportError:
     from collections import Mapping
-
 
 _ver = sys.version_info
 is_py2 = _ver[0] == 2
@@ -21,9 +21,10 @@ if is_py2:  # pragma: no cover
 if is_py3:  # pragma: no cover
     str = str
 
-ACRONYM_RE = re.compile(r"([A-Z]+)(?=[A-Z][a-z])")
+ACRONYM_RE = re.compile(r'([A-Z]+)$|([A-Z]+)(?=[A-Z0-9])')
+# ACRONYM_RE = re.compile(r"([A-Z]+)(?=[A-Z][a-z])")
 PASCAL_RE = re.compile(r"([^\-_\s]+)")
-SPLIT_RE = re.compile(r"([\-_\s]*[A-Z0-9]+[^A-Z\-_\s]+[\-_\s]*)")
+SPLIT_RE = re.compile(r"([\-_\s]*[A-Z]+[^A-Z\-_\s]+[\-_\s]*)")
 UNDERSCORE_RE = re.compile(r"([^\-_\s])[\-_\s]+([^\-_\s])")
 
 
@@ -48,22 +49,27 @@ def pascalize(str_or_iter):
     if s.isupper():
         return str_or_iter
 
-    s = camelize(
-        PASCAL_RE.sub(lambda m: m.group(1)[0].upper() + m.group(1)[1:], s),
-    )
+    def _replace_fn(match):
+        """
+
+        :rtype: str
+        """
+        print(match.groups())
+        return match.group(1)[0].upper() + match.group(1)[1:]
+
+    s = camelize(PASCAL_RE.sub(_replace_fn, s))
     return s[0].upper() + s[1:]
 
 
 def camelize(str_or_iter):
-    """Convert a string, dict, or list of dicts to camel case.
+    """
+    Convert a string, dict, or list of dicts to camel case.
 
     :param str_or_iter:
       A string or iterable.
     :type str_or_iter: Union[list, dict, str]
     :rtype: Union[list, dict, str]
-    :returns:
-      camelized string, dictionary, or list of dictionaries.
-
+    :returns: camelized string, dictionary, or list of dictionaries.
     """
     if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, camelize)
@@ -75,14 +81,20 @@ def camelize(str_or_iter):
     if s.isupper():
         return str_or_iter
 
-    return "".join(
-        [
-            s[0].lower() if not s[:2].isupper() else s[0],
-            UNDERSCORE_RE.sub(
-                lambda m: m.group(1) + m.group(2).upper(), s[1:]
-            ),
-        ]
-    )
+    str_items = []
+
+    def _replace_fn(match):
+        """
+        For string "hello_world", match will contain the regex capture group for "o_w".
+        :rtype: str
+        """
+        return match.group(1) + match.group(2).upper()
+
+    str_items.extend([
+        s[0].lower() if not s[:2].isupper() else s[0],
+        UNDERSCORE_RE.sub(_replace_fn, s)[1:],
+        ])
+    return ''.join(str_items)
 
 
 def decamelize(str_or_iter):
@@ -106,6 +118,10 @@ def decamelize(str_or_iter):
     if s.isupper():
         return str_or_iter
 
+    # print '\n'
+    # print s
+    # print _fix_abbrevations(s)
+    # print separate_words(s)
     return separate_words(_fix_abbrevations(s)).lower()
 
 
@@ -172,19 +188,30 @@ def _process_keys(str_or_iter, fn):
 
 
 def _fix_abbrevations(string):
-    """Rewrite incorrectly cased acronyms, initialisms, and abbrevations,
+    """
+    Rewrite incorrectly cased acronyms, initialisms, and abbreviations,
     allowing them to be decamelized correctly. For example, given the string
-    "APIReponse", this function is responsible for ensuring the output is
+    "APIResponse", this function is responsible for ensuring the output is
     "api_response" instead of "a_p_i_response".
 
-    :param str string:
-        A string that may contain an incorrectly cased abbrevation.
+    :param string: A string that may contain an incorrectly cased abbreviation.
+    :type string: str
     :rtype: str
-    :returns:
-        A rewritten string that is safe for decamelization.
+    :returns: A rewritten string that is safe for decamelization.
     """
     return ACRONYM_RE.sub(lambda m: m.group(0).title(), string)
 
 
-def separate_words(string, separator="_", split=SPLIT_RE.split):
-    return separator.join(s for s in split(string) if s)
+def separate_words(string, separator="_"):
+    """
+    Split words that are separated by case differences.
+    :param string: Original string.
+    :param separator: String by which the individual words will be put back together.
+    :return: New string
+    """
+    return separator.join(s for s in SPLIT_RE.split(string) if s)
+
+
+print(separate_words('whatever_hi'))
+print(separate_words('WhateverHi'))
+print(separate_words('whatever_10'))
