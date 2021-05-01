@@ -21,22 +21,22 @@ if is_py2:  # pragma: no cover
 if is_py3:  # pragma: no cover
     str = str
 
-ACRONYM_RE = re.compile(r'([A-Z]+)$|([A-Z]+)(?=[A-Z0-9])')
+ACRONYM_RE = re.compile(r"([A-Z]+)$|([A-Z]+)(?=[A-Z0-9])")
 PASCAL_RE = re.compile(r"([^\-_\s]+)")
 SPLIT_RE = re.compile(r"([\-_\s]*[A-Z]+[^A-Z\-_\s]+[\-_\s]*)")
 UNDERSCORE_RE = re.compile(r"([^\-_\s])[\-_\s]+([^\-_\s])")
 
 
 def pascalize(str_or_iter):
-    """Convert a string, dict, or list of dicts to pascal case.
+    """
+    Convert a string, dict, or list of dicts to pascal case.
 
     :param str_or_iter:
-      A string or iterable.
+        A string or iterable.
     :type str_or_iter: Union[list, dict, str]
     :rtype: Union[list, dict, str]
     :returns:
-      pascalized string, dictionary, or list of dictionaries.
-
+        pascalized string, dictionary, or list of dictionaries.
     """
     if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, pascalize)
@@ -63,10 +63,11 @@ def camelize(str_or_iter):
     Convert a string, dict, or list of dicts to camel case.
 
     :param str_or_iter:
-      A string or iterable.
+        A string or iterable.
     :type str_or_iter: Union[list, dict, str]
     :rtype: Union[list, dict, str]
-    :returns: camelized string, dictionary, or list of dictionaries.
+    :returns:
+        camelized string, dictionary, or list of dictionaries.
     """
     if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, camelize)
@@ -82,7 +83,8 @@ def camelize(str_or_iter):
 
     def _replace_fn(match):
         """
-        For string "hello_world", match will contain the regex capture group for "o_w".
+        For string "hello_world", match will contain
+            the regex capture group for "o_w".
         :rtype: str
         """
         return match.group(1) + match.group(2).upper()
@@ -91,19 +93,19 @@ def camelize(str_or_iter):
         s[0].lower() if not s[:2].isupper() else s[0],
         UNDERSCORE_RE.sub(_replace_fn, s)[1:],
         ])
-    return ''.join(str_items)
+    return "".join(str_items)
 
 
 def decamelize(str_or_iter):
-    """Convert a string, dict, or list of dicts to snake case.
+    """
+    Convert a string, dict, or list of dicts to snake case.
 
     :param str_or_iter:
-      A string or iterable.
+        A string or iterable.
     :type str_or_iter: Union[list, dict, str]
     :rtype: Union[list, dict, str]
     :returns:
-      snake cased string, dictionary, or list of dictionaries.
-
+        snake cased string, dictionary, or list of dictionaries.
     """
     if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, decamelize)
@@ -119,54 +121,55 @@ def decamelize(str_or_iter):
 
 
 def depascalize(str_or_iter):
-    """Convert a string, dict, or list of dicts to snake case.
+    """
+    Convert a string, dict, or list of dicts to snake case.
 
-    :param str_or_iter:
-      A string or iterable.
+    :param str_or_iter: A string or iterable.
     :type str_or_iter: Union[list, dict, str]
     :rtype: Union[list, dict, str]
     :returns:
-      snake cased string, dictionary, or list of dictionaries.
-
+        snake cased string, dictionary, or list of dictionaries.
     """
     return decamelize(str_or_iter)
 
 
 def is_camelcase(str_or_iter):
-    """Determine if a string, dict, or list of dicts is camel case.
+    """
+    Determine if a string, dict, or list of dicts is camel case.
 
     :param str_or_iter:
-      A string or iterable.
+        A string or iterable.
     :type str_or_iter: Union[list, dict, str]
     :rtype: bool
     :returns:
-      True/False whether string or iterable is camel case
+        True/False whether string or iterable is camel case
     """
     return str_or_iter == camelize(str_or_iter)
 
 
 def is_pascalcase(str_or_iter):
-    """Determine if a string, dict, or list of dicts is pascal case.
+    """
+    Determine if a string, dict, or list of dicts is pascal case.
 
-    :param str_or_iter:
-      A string or iterable.
+    :param str_or_iter: A string or iterable.
     :type str_or_iter: Union[list, dict, str]
     :rtype: bool
     :returns:
-      True/False whether string or iterable is pascal case
+        True/False whether string or iterable is pascal case
     """
     return str_or_iter == pascalize(str_or_iter)
 
 
 def is_snakecase(str_or_iter):
-    """Determine if a string, dict, or list of dicts is snake case.
+    """
+    Determine if a string, dict, or list of dicts is snake case.
 
     :param str_or_iter:
-      A string or iterable.
+        A string or iterable.
     :type str_or_iter: Union[list, dict, str]
     :rtype: bool
     :returns:
-      True/False whether string or iterable is snake case
+        True/False whether string or iterable is snake case
     """
     return str_or_iter == decamelize(str_or_iter)
 
@@ -190,16 +193,19 @@ def _fix_abbrevations(string):
     :param string: A string that may contain an incorrectly cased abbreviation.
     :type string: str
     :rtype: str
-    :returns: A rewritten string that is safe for decamelization.
+    :returns:
+        A rewritten string that is safe for decamelization.
     """
     return ACRONYM_RE.sub(lambda m: m.group(0).title(), string)
 
 
 def separate_words(string, separator="_"):
     """
-    Split words that are separated by case differences.
+    Split words that are separated by case differentiation.
     :param string: Original string.
-    :param separator: String by which the individual words will be put back together.
-    :return: New string
+    :param separator: String by which the individual
+        words will be put back together.
+    :returns:
+        New string.
     """
     return separator.join(s for s in SPLIT_RE.split(string) if s)
