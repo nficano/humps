@@ -51,10 +51,8 @@ def pascalize(str_or_iter):
 
     def _replace_fn(match):
         """
-
         :rtype: str
         """
-        print(match.groups())
         return match.group(1)[0].upper() + match.group(1)[1:]
 
     s = camelize(PASCAL_RE.sub(_replace_fn, s))
@@ -118,10 +116,6 @@ def decamelize(str_or_iter):
     if s.isupper():
         return str_or_iter
 
-    # print '\n'
-    # print s
-    # print _fix_abbrevations(s)
-    # print separate_words(s)
     return separate_words(_fix_abbrevations(s)).lower()
 
 
@@ -210,8 +204,3 @@ def separate_words(string, separator="_"):
     :return: New string
     """
     return separator.join(s for s in SPLIT_RE.split(string) if s)
-
-
-print(separate_words('whatever_hi'))
-print(separate_words('WhateverHi'))
-print(separate_words('whatever_10'))
