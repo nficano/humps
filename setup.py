@@ -15,7 +15,7 @@ setup(
     author="Nick Ficano",
     author_email="nficano@gmail.com",
     packages=["humps"],
-    package_data={"": ["LICENSE"], },
+    package_data={"": ["LICENSE"]},
     url="https://github.com/nficano/humps",
     license="The Unlicense (Unlicense)",
     classifiers=[
@@ -37,5 +37,5 @@ setup(
     include_package_data=True,
     long_description_content_type="text/markdown",
     long_description=long_description,
-    keywords=["humps", "snakecase", "convert case", "camelcase", ],
+    keywords=["humps", "snakecase", "convert case", "camelcase"],
 )

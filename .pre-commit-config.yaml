@@ -35,6 +35,7 @@ repos:
     rev: v1.4.4
     hooks:
       - id: autopep8
+        args: ["--exclude setup.py"]
   - repo: https://github.com/pre-commit/pre-commit
     rev: v1.18.3
     hooks:
