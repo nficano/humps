@@ -29,6 +29,7 @@ repos:
       - id: requirements-txt-fixer
       - id: sort-simple-yaml
       - id: trailing-whitespace
+        args: [--exclude setup.py]
       - id: check-added-large-files
         args: ["--maxkb=500"]
   - repo: https://github.com/pre-commit/mirrors-autopep8
