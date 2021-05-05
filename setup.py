@@ -11,7 +11,7 @@ with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pyhumps",
-    version="1.6.1",
+    version="2.0.0",
     author="Nick Ficano",
     author_email="nficano@gmail.com",
     packages=["humps"],
