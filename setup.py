@@ -2,14 +2,14 @@
 import codecs
 import os
 
-from setuptools import setup
+import setuptools
 
 here = os.path.abspath(os.path.dirname(__file__))
 
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-setup(
+setuptools.setup(
     name="pyhumps",
     version="1.6.1",
     author="Nick Ficano",
