@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """humps documentation build configuration file."""
 import os
 import sys
@@ -66,9 +65,7 @@ pygments_style = "sphinx"
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
-intersphinx_mapping = {
-    "python": ("https://docs.python.org/3/", None),
-}
+intersphinx_mapping = {"python": ("https://docs.python.org/3/", None)}
 
 
 # -- Options for HTML output ----------------------------------------------
@@ -102,7 +99,7 @@ html_sidebars = {
         "relations.html",  # needs 'show_related': True theme option to display
         "searchbox.html",
         "donate.html",
-    ],
+    ]
 }
 
 
@@ -120,7 +117,7 @@ latex_elements = {}
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "humps.tex", "humps Documentation", "Nick Ficano", "manual",),
+    (master_doc, "humps.tex", "humps Documentation", "Nick Ficano", "manual")
 ]
 
 
@@ -128,9 +125,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, "humps", "humps Documentation", [author], 1,),
-]
+man_pages = [(master_doc, "humps", "humps Documentation", [author], 1)]
 
 
 # -- Options for Texinfo output -------------------------------------------
@@ -147,5 +142,5 @@ texinfo_documents = [
         "humps",
         "One line description of project.",
         "Miscellaneous",
-    ),
+    )
 ]

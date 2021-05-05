@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 This module contains all the core logic for humps.
 """
@@ -89,10 +88,12 @@ def camelize(str_or_iter):
         """
         return match.group(1) + match.group(2).upper()
 
-    str_items.extend([
-        s[0].lower() if not s[:2].isupper() else s[0],
-        UNDERSCORE_RE.sub(_replace_fn, s)[1:],
-        ])
+    str_items.extend(
+        [
+            s[0].lower() if not s[:2].isupper() else s[0],
+            UNDERSCORE_RE.sub(_replace_fn, s)[1:],
+        ]
+    )
     return "".join(str_items)
 
 

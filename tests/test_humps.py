@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import pytest
 
 import humps
@@ -11,15 +10,18 @@ def test_converting_strings():
     assert humps.pascalize("red_robin") == "RedRobin"
 
 
-@pytest.mark.parametrize("input_str, expected_output", [
-    ("PERatio", "pe_ratio"),
-    ("HTTPResponse", "http_response"),
-    ("_HTTPResponse", "_http_response"),
-    ("_HTTPResponse__", "_http_response__"),
-    ("BIP73", "BIP73"),
-    ("BIP72b", "bip72b"),
-    ("memMB", "mem_mb")
-    ])
+@pytest.mark.parametrize(
+    "input_str, expected_output",
+    [
+        ("PERatio", "pe_ratio"),
+        ("HTTPResponse", "http_response"),
+        ("_HTTPResponse", "_http_response"),
+        ("_HTTPResponse__", "_http_response__"),
+        ("BIP73", "BIP73"),
+        ("BIP72b", "bip72b"),
+        ("memMB", "mem_mb"),
+    ],
+)
 def test_camelized_acronyms(input_str, expected_output):
     """
     Validate decamelizing acronyms works as expected.
@@ -73,14 +75,14 @@ def test_pascalize():
                     "fallback_url": "https://media.io/video",
                     "scrubber_media_url": "https://media.io/video",
                     "dash_url": "https://media.io/video",
-                },
+                }
             ],
             "images": [
                 {
                     "fallback_url": "https://media.io/image",
                     "scrubber_media_url": "https://media.io/image",
                     "url": "https://media.io/image",
-                },
+                }
             ],
             "other": [
                 {
@@ -105,14 +107,14 @@ def test_pascalize():
                 "FallbackUrl": "https://media.io/video",
                 "ScrubberMediaUrl": "https://media.io/video",
                 "DashUrl": "https://media.io/video",
-            },
+            }
         ],
         "Images": [
             {
                 "FallbackUrl": "https://media.io/image",
                 "ScrubberMediaUrl": "https://media.io/image",
                 "Url": "https://media.io/image",
-            },
+            }
         ],
         "Other": [
             {
