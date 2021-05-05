@@ -38,4 +38,5 @@ def test_separate_words(input_str, expected_output):
     :param expected_output: The expected transformation.
     """
     output = separate_words(input_str)
-    assert output == expected_output, "{} != {}".format(output, expected_output)
+    assert output == expected_output, "{} != {}".format(
+        output, expected_output)

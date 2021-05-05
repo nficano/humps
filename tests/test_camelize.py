@@ -31,7 +31,8 @@ def test_camelize(input_str, expected_output):
     :param expected_output: The expected transformation.
     """
     output = humps.camelize(input_str)
-    assert output == expected_output, "{} != {}".format(output, expected_output)
+    assert output == expected_output, "{} != {}".format(
+        output, expected_output)
 
 
 def test_camelize_dict_list():
