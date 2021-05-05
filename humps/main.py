@@ -4,7 +4,6 @@ This module contains all the core logic for humps.
 import re
 import sys
 
-
 try:
     from collections.abc import Mapping
 except ImportError:

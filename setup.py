@@ -1,10 +1,7 @@
 """This module contains setup instructions for pyhumps."""
 import codecs
 import os
-import sys
-from shutil import rmtree
 
-from setuptools import Command
 from setuptools import setup
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -12,46 +9,15 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-
-class UploadCommand(Command):
-    """Support setup.py publish."""
-
-    description = "Build and publish the package."
-    user_options = []
-
-    @staticmethod
-    def status(s):
-        """Prints things in bold."""
-        print("\033[1m{}\033[0m".format(s))
-
-    def initialize_options(self):
-        pass
-
-    def finalize_options(self):
-        pass
-
-    def run(self):
-        try:
-            self.status("Removing previous builds ...")
-            rmtree(os.path.join(here, "dist"))
-        except Exception:
-            pass
-        self.status("Building Source distribution ...")
-        os.system("{} setup.py sdist bdist_wheel".format(sys.executable))
-        self.status("Uploading the package to PyPI via Twine ...")
-        os.system("twine upload dist/*")
-        sys.exit()
-
-
 setup(
     name="pyhumps",
     version="1.6.1",
     author="Nick Ficano",
     author_email="nficano@gmail.com",
     packages=["humps"],
+    package_data={"": ["LICENSE"],},
     url="https://github.com/nficano/humps",
-    license="MIT",
-    package_data={"": ["LICENSE"]},  # noqa
+    license="The Unlicense (Unlicense)",
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
@@ -64,13 +30,12 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
     ],
-    description=(
+        description=(
         "🐫  Convert strings (and dictionary keys) between snake case, camel "
         "case and pascal case in Python. Inspired by Humps for Node"
-    ),
+        ),
     include_package_data=True,
     long_description_content_type="text/markdown",
     long_description=long_description,
-    zip_safe=True,
-    cmdclass={"upload": UploadCommand},
+    keywords=["humps", "snakecase", "convert case", "camelcase",],
 )

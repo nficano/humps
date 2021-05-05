@@ -9,11 +9,12 @@ __author__ = "Nick Ficano"
 __license__ = "MIT License"
 __copyright__ = "Copyright 2019 Nick Ficano"
 
-from humps.main import camelize
-from humps.main import decamelize
-from humps.main import depascalize
-from humps.main import pascalize
-
-from humps.main import is_camelcase
-from humps.main import is_pascalcase
-from humps.main import is_snakecase
+from humps.main import (
+    camelize,
+    decamelize,
+    depascalize,
+    is_camelcase,
+    is_pascalcase,
+    is_snakecase,
+    pascalize,
+)

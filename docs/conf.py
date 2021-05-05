@@ -5,9 +5,10 @@ import sys
 
 import sphinx_rtd_theme
 
+from humps import __version__  # noqa
+
 sys.path.insert(0, os.path.abspath("../"))
 
-from humps import __version__  # noqa
 
 # -- General configuration ------------------------------------------------
 
