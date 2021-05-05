@@ -15,7 +15,7 @@ setup(
     author="Nick Ficano",
     author_email="nficano@gmail.com",
     packages=["humps"],
-    package_data={"": ["LICENSE"],},
+    package_data={"": ["LICENSE"], },
     url="https://github.com/nficano/humps",
     license="The Unlicense (Unlicense)",
     classifiers=[
@@ -30,12 +30,12 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
     ],
-        description=(
+    description=(
         "🐫  Convert strings (and dictionary keys) between snake case, camel "
         "case and pascal case in Python. Inspired by Humps for Node"
-        ),
+    ),
     include_package_data=True,
     long_description_content_type="text/markdown",
     long_description=long_description,
-    keywords=["humps", "snakecase", "convert case", "camelcase",],
+    keywords=["humps", "snakecase", "convert case", "camelcase", ],
 )
