@@ -36,7 +36,8 @@ def test_decamelize(input_str, expected_output):
     """
     output = humps.decamelize(input_str)
     assert output == expected_output, "{} != {}".format(
-        output, expected_output)
+        output, expected_output
+    )
 
 
 def test_decamelize_dict_list():

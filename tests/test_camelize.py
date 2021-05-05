@@ -32,7 +32,8 @@ def test_camelize(input_str, expected_output):
     """
     output = humps.camelize(input_str)
     assert output == expected_output, "{} != {}".format(
-        output, expected_output)
+        output, expected_output
+    )
 
 
 def test_camelize_dict_list():

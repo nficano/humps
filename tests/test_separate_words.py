@@ -39,4 +39,5 @@ def test_separate_words(input_str, expected_output):
     """
     output = separate_words(input_str)
     assert output == expected_output, "{} != {}".format(
-        output, expected_output)
+        output, expected_output
+    )
