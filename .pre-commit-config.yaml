@@ -28,14 +28,8 @@ repos:
         args: ["--fix=lf"]
       - id: requirements-txt-fixer
       - id: sort-simple-yaml
-      - id: trailing-whitespace
-        args: [--exclude setup.py]
       - id: check-added-large-files
         args: ["--maxkb=500"]
-  - repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v1.4.4
-    hooks:
-      - id: autopep8
   - repo: https://github.com/pre-commit/pre-commit
     rev: v1.18.3
     hooks:
