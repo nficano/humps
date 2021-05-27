@@ -33,9 +33,6 @@ To install humps, simply use pipenv (or pip, of course):
 ```bash
 $ pipenv install pyhumps
 ```
-
-## API Reference and User Guide available on [Countor](https://docs.contour.so/nficano/humps/README)
-
 ## Usage
 
 ### Converting strings
