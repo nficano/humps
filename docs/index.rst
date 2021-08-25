@@ -9,7 +9,7 @@ Release v\ |version|. (:ref:`Installation <install>`)
 
 .. image:: https://img.shields.io/pypi/v/pyhumps.svg
   :alt: Pypi
-  :target: https://pypi.python.org/pypi/humps/
+  :target: https://pypi.python.org/pypi/pyhumps/
 
 .. image:: https://travis-ci.org/nficano/humps.svg?branch=master
    :alt: Build status
