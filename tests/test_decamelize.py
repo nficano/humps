@@ -27,6 +27,10 @@ import humps
         ("_itemID", "_item_id"),
         # Fixed issue #4. 2021-05-01
         ("memMB", "mem_mb"),
+        # Fixed issue #127. 2021-09-13
+        ("sizeX", "size_x"),
+        # Fixed issue #168. 2021-09-13
+        ("aB", "a_b"),
     ],
 )
 def test_decamelize(input_str, expected_output):
