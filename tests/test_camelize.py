@@ -23,6 +23,12 @@ import humps
         ("__APIResponse__", "__APIResponse__"),
         # Fixed issue #128
         ("whatever_10", "whatever10"),
+        # Fixed issue # 18
+        ("test-1-2-3-4-5-6", "test123456"),
+        # Fixed issue # 61
+        ("test_n_test", "testNTest"),
+        # Fixed issue # 148
+        ("field_value_2_type", "fieldValue2Type"),
     ],
 )
 def test_camelize(input_str, expected_output):
