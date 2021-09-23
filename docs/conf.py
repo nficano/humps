@@ -5,9 +5,9 @@ import sys
 
 import sphinx_rtd_theme
 
-sys.path.insert(0, os.path.abspath("../")) # fmt: skip
+sys.path.insert(0, os.path.abspath("../"))
 
-from humps import __version__  # fmt: skip
+from humps import __version__  # noqa
 
 
 # -- General configuration ------------------------------------------------

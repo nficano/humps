@@ -85,7 +85,7 @@ def camelize(str_or_iter):
             the regex capture group for "o_w".
         :rtype: str
         """
-        return match.group(1) + match.group(2).upper()
+        return match.group(1).upper()
 
     str_items.extend(
         [
