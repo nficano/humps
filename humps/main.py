@@ -22,7 +22,7 @@ if is_py3:  # pragma: no cover
 ACRONYM_RE = re.compile(r"([A-Z]+)$|([A-Z]+)(?=[A-Z0-9])")
 PASCAL_RE = re.compile(r"([^\-_\s]+)")
 SPLIT_RE = re.compile(r"([\-_\s]*[A-Z]+[^A-Z\-_\s]+[\-_\s]*)")
-UNDERSCORE_RE = re.compile(r"([^\-_\s])[\-_\s]+([^\-_\s])")
+UNDERSCORE_RE = re.compile(r"(?<=[^\-_\s])[\-_\s]+([^\-_\s])")
 
 
 def pascalize(str_or_iter):
@@ -85,7 +85,7 @@ def camelize(str_or_iter):
             the regex capture group for "o_w".
         :rtype: str
         """
-        return match.group(1) + match.group(2).upper()
+        return match.group(1).upper()
 
     str_items.extend(
         [
