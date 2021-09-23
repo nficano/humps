@@ -30,6 +30,10 @@ from humps.main import separate_words
         # Fixes issue #128
         ("whatever_hi", "whatever_hi"),
         ("whatever_10", "whatever_10"),
+        # Fixes issue #127
+        ("sizeX", "size_X"),
+        # Fixes issue #168
+        ("aB", "a_B"),
     ],
 )
 def test_separate_words(input_str, expected_output):
