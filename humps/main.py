@@ -22,7 +22,7 @@ if is_py3:  # pragma: no cover
 ACRONYM_RE = re.compile(r"([A-Z]+)$|([A-Z]+)(?=[A-Z0-9])")
 PASCAL_RE = re.compile(r"([^\-_\s]+)")
 SPLIT_RE = re.compile(r"([\-_\s]*[A-Z]+[^A-Z\-_\s]*[\-_\s]*)")
-UNDERSCORE_RE = re.compile(r"(?<=[^\-_\s])[\-_\s]+([^\-_\s])")
+UNDERSCORE_RE = re.compile(r"(?<=[^\-_\s])[\-_\s]+[^\-_\s]")
 
 
 def pascalize(str_or_iter):
@@ -40,10 +40,7 @@ def pascalize(str_or_iter):
         return _process_keys(str_or_iter, pascalize)
 
     s = str(str_or_iter)
-    if s.isnumeric():
-        return str_or_iter
-
-    if s.isupper():
+    if s.isupper() or s.isnumeric():
         return str_or_iter
 
     def _replace_fn(match):
@@ -71,29 +68,21 @@ def camelize(str_or_iter):
         return _process_keys(str_or_iter, camelize)
 
     s = str(str_or_iter)
-    if s.isnumeric():
+    if s.isupper() or s.isnumeric():
         return str_or_iter
 
-    if s.isupper():
-        return str_or_iter
-
-    str_items = []
+    if not s[:2].isupper():
+        s = s[0].lower() + s[1:]
 
     def _replace_fn(match):
         """
         For string "hello_world", match will contain
-            the regex capture group for "o_w".
+            the regex capture group for "_w".
         :rtype: str
         """
-        return match.group(1).upper()
+        return match.group(0)[-1].upper()
 
-    str_items.extend(
-        [
-            s[0].lower() if not s[:2].isupper() else s[0],
-            UNDERSCORE_RE.sub(_replace_fn, s)[1:],
-        ]
-    )
-    return "".join(str_items)
+    return UNDERSCORE_RE.sub(_replace_fn, s)
 
 
 def decamelize(str_or_iter):
@@ -111,13 +100,10 @@ def decamelize(str_or_iter):
         return _process_keys(str_or_iter, decamelize)
 
     s = str(str_or_iter)
-    if s.isnumeric():
+    if s.isupper() or s.isnumeric():
         return str_or_iter
 
-    if s.isupper():
-        return str_or_iter
-
-    return separate_words(_fix_abbrevations(s)).lower()
+    return separate_words(_fix_abbreviations(s)).lower()
 
 
 def depascalize(str_or_iter):
@@ -183,7 +169,7 @@ def _process_keys(str_or_iter, fn):
         return str_or_iter
 
 
-def _fix_abbrevations(string):
+def _fix_abbreviations(string):
     """
     Rewrite incorrectly cased acronyms, initialisms, and abbreviations,
     allowing them to be decamelized correctly. For example, given the string
