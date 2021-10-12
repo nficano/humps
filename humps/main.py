@@ -21,7 +21,7 @@ if is_py3:  # pragma: no cover
 
 ACRONYM_RE = re.compile(r"([A-Z]+)$|([A-Z]+)(?=[A-Z0-9])")
 PASCAL_RE = re.compile(r"([^\-_\s]+)")
-SPLIT_RE = re.compile(r"([\-_\s]*[A-Z]+[^A-Z\-_\s]*[\-_\s]*)")
+SPLIT_RE = re.compile(r"([\-_\s]*[A-Z]+?[^A-Z\-_\s]*[\-_\s]*)")
 UNDERSCORE_RE = re.compile(r"(?<=[^\-_\s])[\-_\s]+[^\-_\s]")
 
 
@@ -74,15 +74,9 @@ def camelize(str_or_iter):
     if not s[:2].isupper():
         s = s[0].lower() + s[1:]
 
-    def _replace_fn(match):
-        """
-        For string "hello_world", match will contain
-            the regex capture group for "_w".
-        :rtype: str
-        """
-        return match.group(0)[-1].upper()
-
-    return UNDERSCORE_RE.sub(_replace_fn, s)
+    # For string "hello_world", match will contain
+    #             the regex capture group for "_w".
+    return UNDERSCORE_RE.sub(lambda m: m.group(0)[-1].upper(), s)
 
 
 def decamelize(str_or_iter):
@@ -163,10 +157,9 @@ def is_snakecase(str_or_iter):
 def _process_keys(str_or_iter, fn):
     if isinstance(str_or_iter, list):
         return [_process_keys(k, fn) for k in str_or_iter]
-    elif isinstance(str_or_iter, Mapping):
+    if isinstance(str_or_iter, Mapping):
         return {fn(k): _process_keys(v, fn) for k, v in str_or_iter.items()}
-    else:
-        return str_or_iter
+    return str_or_iter
 
 
 def _fix_abbreviations(string):

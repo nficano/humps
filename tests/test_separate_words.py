@@ -34,6 +34,8 @@ from humps.main import separate_words
         ("sizeX", "size_X"),
         # Fixes issue #168
         ("aB", "a_B"),
+        # Fixed issue #201. 2021-10-12
+        ("testNTest", "test_N_Test"),
     ],
 )
 def test_separate_words(input_str, expected_output):
