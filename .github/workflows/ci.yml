@@ -10,6 +10,8 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     strategy:
       matrix:
@@ -32,3 +34,6 @@ jobs:
 
       - name: Run make ci
         run: make ci
+
+      - name: Coveralls
+        run: pipenv run coveralls --service=github
