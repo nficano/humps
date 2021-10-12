@@ -8,6 +8,7 @@ name = "pypi"
 [dev-packages]
 bumpversion = "*"
 pytest = "*"
+pylint = "*"
 flake8 = "*"
 pytest-cov = "*"
 pathlib2 = "*"
