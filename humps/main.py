@@ -2,22 +2,9 @@
 This module contains all the core logic for humps.
 """
 import re
-import sys
 
-try:
-    from collections.abc import Mapping
-except ImportError:
-    from collections import Mapping
+from collections.abc import Mapping
 
-_ver = sys.version_info
-is_py2 = _ver[0] == 2
-is_py3 = _ver[0] == 3
-
-if is_py2:  # pragma: no cover
-    str = unicode  # noqa
-
-if is_py3:  # pragma: no cover
-    str = str
 
 ACRONYM_RE = re.compile(r"([A-Z]+)$|([A-Z]+)(?=[A-Z0-9])")
 PASCAL_RE = re.compile(r"([^\-_\s]+)")
