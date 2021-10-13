@@ -31,6 +31,8 @@ import humps
         ("sizeX", "size_x"),
         # Fixed issue #168. 2021-09-13
         ("aB", "a_b"),
+        # Fixed issue #201. 2021-10-12
+        ("testNTest", "test_n_test"),
     ],
 )
 def test_decamelize(input_str, expected_output):
