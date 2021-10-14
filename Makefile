@@ -43,8 +43,13 @@ ci:
 	pip install pipenv
 	pipenv install --dev --skip-lock
 	pipenv run flake8
+	pipenv run pylint humps
 	# pipenv run pytest --cov-report term-missing # --cov=humps
 	pipenv run coverage run -m pytest
+
+lint:
+	pipenv run flake8
+	pipenv run pylint humps
 
 clean: clean-build clean-pyc
 
