@@ -231,11 +231,11 @@
         },
         "coveralls": {
             "hashes": [
-                "sha256:4508b8f18344b421a736a276b813daddfdbbe45928c3f878fa72bf54442ea641",
-                "sha256:f3c2142c9117c6dd04bc721cc733e59cdb9fd516924c551f98a458d16f8facf0"
+                "sha256:b32a8bb5d2df585207c119d6c01567b81fba690c9c10a753bfe27a335bfc43ea",
+                "sha256:f42015f31d386b351d4226389b387ae173207058832fbf5c8ec4b40e27b16026"
             ],
             "index": "pypi",
-            "version": "==3.3.0"
+            "version": "==3.3.1"
         },
         "cryptography": {
             "hashes": [
