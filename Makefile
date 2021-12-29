@@ -1,18 +1,8 @@
-dev:
-	pipenv install --dev
+deploy-patch: clean bumpversion-patch upload clean
 
-pipenv:
-	pip install pipenv
-	pipenv install --dev
+deploy-minor: clean bumpversion-minor upload clean
 
-deploy-patch: clean requirements bumpversion-patch upload clean
-
-deploy-minor: clean requirements bumpversion-minor upload clean
-
-deploy-major: clean requirements bumpversion-major upload clean
-
-requirements:
-	pipenv_to_requirements
+deploy-major: clean bumpversion-major upload clean
 
 bumpversion-patch:
 	bumpversion patch
