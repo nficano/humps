@@ -30,16 +30,16 @@ help:
 	@echo "install - install the package to the active Python's site-packages"
 
 ci:
-	pip install pipenv
-	pipenv install --dev --skip-lock
-	pipenv run flake8
-	pipenv run pylint humps
-	# pipenv run pytest --cov-report term-missing # --cov=humps
-	pipenv run coverage run -m pytest
+	pip install poetry
+	poetry install
+	poetry run flake8 humps
+	poetry run pylint humps
+	# poetry run pytest --cov-report term-missing # --cov=humps
+	poetry run coverage run -m pytest
 
 lint:
-	pipenv run flake8
-	pipenv run pylint humps
+	poetry run flake8 humps
+	poetry run pylint humps
 
 clean: clean-build clean-pyc
 
