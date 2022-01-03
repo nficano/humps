@@ -32,13 +32,13 @@ jobs:
           python-version: ${{ matrix.python }}
 
       - name: Upgrade pip
-        run: pip install --upgrade pip pipenv
+        run: pip install --upgrade pip poetry
 
-      - name: Install pipenv
-        run: pipenv install --dev --skip-lock --python ${{ matrix.python }}
+      - name: Install poetry
+        run: poetry install
 
       - name: Run make ci
         run: make ci
 
       - name: Coveralls
-        run: pipenv run coveralls --service=github
+        run: poetry run coveralls --service=github
