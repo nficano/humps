@@ -36,9 +36,11 @@ Release v\ |version|. (:ref:`Installation <install>`)
     >>> import humps
     >>> humps.decamelize('illWearYourGranddadsClothes')   # 'ill_wear_your_granddads_clothes'
     >>> humps.camelize('i_look_incredible')               # 'iLookIncredible'
+    >>> humps.kebabize('i_look_incredible')               # 'i-look-incredible'
     >>> humps.pascalize('im_in_this_big_ass_coat')        # 'ImInThisBigAssCoat'
     >>> humps.decamelize('FROMThatThriftShop')            # 'from_that_thrift_shop'
     >>> humps.decamelize([{'downTheRoad': True}])         # [{'down_the_road': True}]
+    >>> humps.dekebabize('FROM-That-Thrift-Shop')            # 'FROM_That_Thrift_Shop'
 
 Features
 --------
@@ -46,6 +48,7 @@ Features
 - Convert from ``snake_case`` to ``camelCase`` and ``PascalCase``
 - Convert from ``camelCase`` to ``snake_case`` and ``PascalCase``
 - Convert from ``PascalCase`` to  ``snake_case`` and ``camelCase``
+- Convert from ``kebab-case`` to ``snake_case``
 - Supports recursively converting ``dict`` keys
 - Supports recursively converting lists of dictionaries
 - Gracefully handles abbrevations, acronyms, and initialisms

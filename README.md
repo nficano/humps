@@ -56,6 +56,10 @@ humps.decamelize(array) # [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
 array = [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
 humps.camelize(array)  # [{'attrOne': 'foo'}, {'attrOne': 'bar'}]
 
+
+array = [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
+humps.kebabize(array)  # [{'attr-one': 'foo'}, {'attr-one': 'bar'}]
+
 array = [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
 humps.pascalize(array)  # [{'AttrOne': 'foo'}, {'AttrOne': 'bar'}]
 ```
@@ -69,6 +73,8 @@ humps.is_pascalcase('ILookIncredible')  # True
 humps.is_snakecase('im_in_this_big_ass_coat')  # True
 humps.is_camelcase('from_that_thrift_shop')  # False
 humps.is_snakecase('downTheRoad')  # False
+humps.is_kebabcase('from_that_thrift_shop')  # False
+humps.is_kebabcase('from-that-thrift-shop')  # True
 
 # what about abbrevations, acronyms, and initialisms? No problem!
 humps.decamelize('APIResponse')  # api_response

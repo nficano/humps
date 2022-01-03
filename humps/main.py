@@ -66,6 +66,30 @@ def camelize(str_or_iter):
     return UNDERSCORE_RE.sub(lambda m: m.group(0)[-1].upper(), s)
 
 
+def kebabize(str_or_iter):
+    """
+    Convert a string, dict, or list of dicts to kebab case.
+
+    :param str_or_iter:
+        A string or iterable.
+    :type str_or_iter: Union[list, dict, str]
+    :rtype: Union[list, dict, str]
+    :returns:
+        kebabized string, dictionary, or list of dictionaries.
+    """
+    if isinstance(str_or_iter, (list, Mapping)):
+        return _process_keys(str_or_iter, kebabize)
+
+    s = str(str_or_iter)
+    if s.isnumeric():
+        return str_or_iter
+
+    if not s[:2].isupper():
+        s = s[0].lower() + s[1:]
+
+    return UNDERSCORE_RE.sub(lambda m: "-" + m.group(0)[-1], s)
+
+
 def decamelize(str_or_iter):
     """
     Convert a string, dict, or list of dicts to snake case.
@@ -100,6 +124,27 @@ def depascalize(str_or_iter):
     return decamelize(str_or_iter)
 
 
+def dekebabize(str_or_iter):
+    """
+    Convert a string, dict, or list of dicts to snake case.
+
+    :param str_or_iter:
+        A string or iterable.
+    :type str_or_iter: Union[list, dict, str]
+    :rtype: Union[list, dict, str]
+    :returns:
+        snake cased string, dictionary, or list of dictionaries.
+    """
+    if isinstance(str_or_iter, (list, Mapping)):
+        return _process_keys(str_or_iter, dekebabize)
+
+    s = str(str_or_iter)
+    if s.isnumeric():
+        return str_or_iter
+
+    return s.replace("-", "_")
+
+
 def is_camelcase(str_or_iter):
     """
     Determine if a string, dict, or list of dicts is camel case.
@@ -112,6 +157,20 @@ def is_camelcase(str_or_iter):
         True/False whether string or iterable is camel case
     """
     return str_or_iter == camelize(str_or_iter)
+
+
+def is_kebabcase(str_or_iter):
+    """
+    Determine if a string, dict, or list of dicts is camel case.
+
+    :param str_or_iter:
+        A string or iterable.
+    :type str_or_iter: Union[list, dict, str]
+    :rtype: bool
+    :returns:
+        True/False whether string or iterable is camel case
+    """
+    return str_or_iter == kebabize(str_or_iter)
 
 
 def is_pascalcase(str_or_iter):

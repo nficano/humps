@@ -12,7 +12,9 @@ __copyright__ = "Copyright 2019 Nick Ficano"
 from humps.main import (
     camelize,
     decamelize,
+    dekebabize,
     depascalize,
+    kebabize,
     is_camelcase,
     is_pascalcase,
     is_snakecase,
