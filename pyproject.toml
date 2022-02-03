@@ -17,7 +17,7 @@ pytest-cov = "^3.0.0"
 pathlib2 = "^2.3.6"
 scandir = "^1.10.0"
 coveralls = "^3.3.1"
-twine = "^3.7.1"
+twine = "^3.8.0"
 ipython = "^7.30.1"
 Sphinx = "^4.3.2"
 
