@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "humps"
-version = "3.5.2"
+version = "3.5.3"
 description = "Convert strings (and dictionary keys) between snake case, camel case and pascal case in Python."
 authors = ["Nick Ficano <nficano@gmail.com>"]
 license = "The Unlicense (Unlicense)"
