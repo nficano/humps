@@ -431,7 +431,7 @@ testing = ["docopt", "pytest (<6.0.0)"]
 
 [[package]]
 name = "pathlib2"
-version = "2.3.6"
+version = "2.3.7.post1"
 description = "Object-oriented filesystem paths"
 category = "dev"
 optional = false
@@ -961,7 +961,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "f95878991406460ea66820bfba7b158f9577bcd3e8ac7554afcded956262998d"
+content-hash = "ba3db9751d3986cce20a892c3b8be77d99415d92ba22d530dec873c2ebf21d20"
 
 [metadata.files]
 alabaster = [
@@ -1325,8 +1325,8 @@ parso = [
     {file = "parso-0.8.3.tar.gz", hash = "sha256:8c07be290bb59f03588915921e29e8a50002acaf2cdc5fa0e0114f91709fafa0"},
 ]
 pathlib2 = [
-    {file = "pathlib2-2.3.6-py2.py3-none-any.whl", hash = "sha256:3a130b266b3a36134dcc79c17b3c7ac9634f083825ca6ea9d8f557ee6195c9c8"},
-    {file = "pathlib2-2.3.6.tar.gz", hash = "sha256:7d8bcb5555003cdf4a8d2872c538faa3a0f5d20630cb360e518ca3b981795e5f"},
+    {file = "pathlib2-2.3.7.post1-py2.py3-none-any.whl", hash = "sha256:5266a0fd000452f1b3467d782f079a4343c63aaa119221fbdc4e39577489ca5b"},
+    {file = "pathlib2-2.3.7.post1.tar.gz", hash = "sha256:9fe0edad898b83c0c3e199c842b27ed216645d2e177757b2dd67384d4113c641"},
 ]
 pexpect = [
     {file = "pexpect-4.8.0-py2.py3-none-any.whl", hash = "sha256:0b48a55dcb3c05f3329815901ea4fc1537514d6ba867a152b581d69ae3710937"},
