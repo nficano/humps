@@ -18,7 +18,7 @@ pathlib2 = "^2.3.6"
 scandir = "^1.10.0"
 coveralls = "^3.3.1"
 twine = "^3.7.1"
-ipython = "^7.31.1"
+ipython = "^7.32.0"
 Sphinx = "^4.3.2"
 
 [build-system]
