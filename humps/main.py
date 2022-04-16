@@ -83,7 +83,7 @@ def decamelize(str_or_iter):
     if s.isupper() or s.isnumeric():
         return str_or_iter
 
-    return separate_words(_fix_abbreviations(s)).lower()
+    return _separate_words(_fix_abbreviations(s)).lower()
 
 
 def depascalize(str_or_iter):
@@ -173,7 +173,7 @@ def _fix_abbreviations(string):
     return ACRONYM_RE.sub(lambda m: m.group(0).title(), string)
 
 
-def separate_words(string, separator="_"):
+def _separate_words(string, separator="_"):
     """
     Split words that are separated by case differentiation.
     :param string: Original string.
