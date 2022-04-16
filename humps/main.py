@@ -36,7 +36,7 @@ def pascalize(str_or_iter):
         return match.group(1)[0].upper() + match.group(1)[1:]
 
     s = camelize(PASCAL_RE.sub(_replace_fn, s))
-    return s[0].upper() + s[1:] if len(s) else s
+    return s[0].upper() + s[1:] if len(s) != 0 else s
 
 
 def camelize(str_or_iter):
@@ -57,7 +57,7 @@ def camelize(str_or_iter):
     if s.isupper() or s.isnumeric():
         return str_or_iter
 
-    if len(s) and not s[:2].isupper():
+    if len(s) != 0 and not s[:2].isupper():
         s = s[0].lower() + s[1:]
 
     # For string "hello_world", match will contain
