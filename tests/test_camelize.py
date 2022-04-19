@@ -29,6 +29,9 @@ import humps
         ("test_n_test", "testNTest"),
         # Fixed issue # 148
         ("field_value_2_type", "fieldValue2Type"),
+        # Fixed issue # 256
+        ("", ""),
+        (None, ""),
     ],
 )
 def test_camelize(input_str, expected_output):

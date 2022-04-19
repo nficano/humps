@@ -5,7 +5,6 @@ import re
 
 from collections.abc import Mapping
 
-
 ACRONYM_RE = re.compile(r"([A-Z]+)$|([A-Z]+)(?=[A-Z0-9])")
 PASCAL_RE = re.compile(r"([^\-_\s]+)")
 SPLIT_RE = re.compile(r"([\-_\s]*[A-Z]+?[^A-Z\-_\s]*[\-_\s]*)")
@@ -26,7 +25,7 @@ def pascalize(str_or_iter):
     if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, pascalize)
 
-    s = str(str_or_iter)
+    s = str(_is_none(str_or_iter))
     if s.isupper() or s.isnumeric():
         return str_or_iter
 
@@ -37,7 +36,7 @@ def pascalize(str_or_iter):
         return match.group(1)[0].upper() + match.group(1)[1:]
 
     s = camelize(PASCAL_RE.sub(_replace_fn, s))
-    return s[0].upper() + s[1:]
+    return s[0].upper() + s[1:] if len(s) != 0 else s
 
 
 def camelize(str_or_iter):
@@ -54,11 +53,11 @@ def camelize(str_or_iter):
     if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, camelize)
 
-    s = str(str_or_iter)
+    s = str(_is_none(str_or_iter))
     if s.isupper() or s.isnumeric():
         return str_or_iter
 
-    if not s[:2].isupper():
+    if len(s) != 0 and not s[:2].isupper():
         s = s[0].lower() + s[1:]
 
     # For string "hello_world", match will contain
@@ -80,11 +79,11 @@ def decamelize(str_or_iter):
     if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, decamelize)
 
-    s = str(str_or_iter)
+    s = str(_is_none(str_or_iter))
     if s.isupper() or s.isnumeric():
         return str_or_iter
 
-    return separate_words(_fix_abbreviations(s)).lower()
+    return _separate_words(_fix_abbreviations(s)).lower()
 
 
 def depascalize(str_or_iter):
@@ -141,6 +140,15 @@ def is_snakecase(str_or_iter):
     return str_or_iter == decamelize(str_or_iter)
 
 
+def _is_none(_in):
+    """
+    Determine if the input is None.
+    :param _in: input
+    :return: an empty sting if _in is None, else the input is kept unchanged
+    """
+    return "" if _in is None else _in
+
+
 def _process_keys(str_or_iter, fn):
     if isinstance(str_or_iter, list):
         return [_process_keys(k, fn) for k in str_or_iter]
@@ -165,7 +173,7 @@ def _fix_abbreviations(string):
     return ACRONYM_RE.sub(lambda m: m.group(0).title(), string)
 
 
-def separate_words(string, separator="_"):
+def _separate_words(string, separator="_"):
     """
     Split words that are separated by case differentiation.
     :param string: Original string.

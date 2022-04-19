@@ -21,6 +21,9 @@ import humps
         ("APIResponse", "APIResponse"),
         ("_APIResponse_", "_APIResponse_"),
         ("__APIResponse__", "__APIResponse__"),
+        # Fixed issue # 256
+        ("", ""),
+        (None, ""),
     ],
 )
 def test_pascalize(input_str, expected_output):
