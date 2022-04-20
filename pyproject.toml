@@ -11,7 +11,7 @@ python = "^3.7"
 [tool.poetry.dev-dependencies]
 bumpversion = "^0.6.0"
 pytest = "^6.2.5"
-pylint = "^2.12.2"
+pylint = "^2.13.6"
 flake8 = "^4.0.1"
 pytest-cov = "^3.0.0"
 pathlib2 = "^2.3.6"
