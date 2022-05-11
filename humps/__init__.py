@@ -6,7 +6,7 @@ Underscore-to-camelCase converter (and vice versa) for strings and dict keys in 
 __title__ = "pyhumps"
 __version__ = "3.7.0"
 __author__ = "Nick Ficano"
-__license__ = "MIT License"
+__license__ = "Unlicense License"
 __copyright__ = "Copyright 2019 Nick Ficano"
 
 from humps.main import (
