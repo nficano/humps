@@ -24,6 +24,7 @@
 Convert strings (and dictionary keys) between snake case, camel case and pascal case in Python. Inspired by [Humps](https://github.com/domchristie/humps) for Node.
 
 ## Jan 11, 2021: An open call for contributors:
+
 Please email me at nficano@gmail.com.
 
 ## Installation
@@ -33,6 +34,7 @@ To install humps, simply use pipenv (or pip, of course):
 ```bash
 $ pipenv install pyhumps
 ```
+
 ## Usage
 
 ### Converting strings
@@ -40,9 +42,9 @@ $ pipenv install pyhumps
 ```python
 import humps
 
-humps.camelize('jack_in_the_box')  # jackInTheBox
-humps.decamelize('rubyTuesdays')  # ruby_tuesdays
-humps.pascalize('red_robin')  # RedRobin
+humps.camelize("jack_in_the_box")  # jackInTheBox
+humps.decamelize("rubyTuesdays")  # ruby_tuesdays
+humps.pascalize("red_robin")  # RedRobin
 ```
 
 ### Converting dictionary keys
@@ -50,28 +52,29 @@ humps.pascalize('red_robin')  # RedRobin
 ```python
 import humps
 
-array = [{'attrOne': 'foo'}, {'attrOne': 'bar'}]
-humps.decamelize(array) # [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
+array = [{"attrOne": "foo"}, {"attrOne": "bar"}]
+humps.decamelize(array) # [{"attr_one": "foo"}, {"attr_one": "bar"}]
 
-array = [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
-humps.camelize(array)  # [{'attrOne': 'foo'}, {'attrOne': 'bar'}]
+array = [{"attr_one": "foo"}, {"attr_one": "bar"}]
+humps.camelize(array)  # [{"attrOne": "foo"}, {"attrOne": "bar"}]
 
-array = [{'attr_one': 'foo'}, {'attr_one': 'bar'}]
-humps.pascalize(array)  # [{'AttrOne': 'foo'}, {'AttrOne': 'bar'}]
+array = [{"attr_one": "foo"}, {"attr_one": "bar"}]
+humps.pascalize(array)  # [{"AttrOne": "foo"}, {"AttrOne": "bar"}]
 ```
 
 ### Checking character casing
+
 ```python
 import humps
 
-humps.is_camelcase('illWearYourGranddadsClothes')  # True
-humps.is_pascalcase('ILookIncredible')  # True
-humps.is_snakecase('im_in_this_big_ass_coat')  # True
-humps.is_camelcase('from_that_thrift_shop')  # False
-humps.is_snakecase('downTheRoad')  # False
+humps.is_camelcase("illWearYourGranddadsClothes")  # True
+humps.is_pascalcase("ILookIncredible")  # True
+humps.is_snakecase("im_in_this_big_ass_coat")  # True
+humps.is_camelcase("from_that_thrift_shop")  # False
+humps.is_snakecase("downTheRoad")  # False
 
 # what about abbrevations, acronyms, and initialisms? No problem!
-humps.decamelize('APIResponse')  # api_response
+humps.decamelize("APIResponse")  # api_response
 ```
 
 <hr>
@@ -86,12 +89,12 @@ import humps
 import boto3
 
 def api(service, decamelize=True, *args, **kwargs):
-    service, func = service.split(':')
+    service, func = service.split(":")
     client = boto3.client(service)
     kwargs = humps.pascalize(kwargs)
     response = getattr(client, func)(*args, **kwargs)
     return (depascalize(response) if decamelize else response)
 
 # usage
-api('s3:download_file', bucket='bucket', key='hello.png', filename='hello.png')
+api("s3:download_file", bucket="bucket", key="hello.png", filename="hello.png")
 ```
