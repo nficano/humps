@@ -8,6 +8,8 @@ def test_converting_strings():
     assert humps.decamelize("rubyTuesdays") == "ruby_tuesdays"
     assert humps.depascalize("UnosPizza") == "unos_pizza"
     assert humps.pascalize("red_robin") == "RedRobin"
+    assert humps.kebabize("white_castle") == "white-castle"
+    assert humps.dekebabize("taco-bell") == "taco_bell"
 
 
 @pytest.mark.parametrize(
@@ -35,29 +37,40 @@ def test_conditionals():
     assert humps.is_pascalcase("RedRobin")
     assert humps.is_snakecase("RedRobin") is False
     assert humps.is_camelcase("RedRobin") is False
+    assert humps.is_kebabcase("RedRobin") is False
 
     assert humps.is_snakecase("ruby_tuesdays")
     assert humps.is_camelcase("ruby_tuesdays") is False
-    assert humps.is_pascalcase("jackInTheBox") is False
+    assert humps.is_pascalcase("ruby_tuesdays") is False
+    assert humps.is_kebabcase("ruby_tuesdays") is False
 
     assert humps.is_camelcase("jackInTheBox")
     assert humps.is_snakecase("jackInTheBox") is False
     assert humps.is_pascalcase("jackInTheBox") is False
+    assert humps.is_kebabcase("jackInTheBox") is False
+
+    assert humps.is_kebabcase("white-castle")
+    assert humps.is_snakecase("white-castle") is False
+    assert humps.is_camelcase("white-castle") is False
+    assert humps.is_pascalcase("white-castle") is False
 
     assert humps.is_camelcase("API")
     assert humps.is_pascalcase("API")
     assert humps.is_snakecase("API")
+    assert humps.is_kebabcase("API")
 
     # Fixed issue #128
     assert humps.is_snakecase("whatever_10")
     assert humps.is_camelcase("whatever_10") is False
     assert humps.is_pascalcase("whatever_10") is False
+    assert humps.is_kebabcase("whatever_10") is False
 
 
 def test_numeric():
     assert humps.camelize(1234) == 1234
     assert humps.decamelize(123) == 123
     assert humps.pascalize(123) == 123
+    assert humps.kebabize(123) == 123
 
 
 def test_upper():
@@ -65,6 +78,8 @@ def test_upper():
     assert humps.decamelize("API") == "API"
     assert humps.pascalize("API") == "API"
     assert humps.depascalize("API") == "API"
+    assert humps.kebabize("API") == "API"
+    assert humps.dekebabize("API") == "API"
 
 
 def test_pascalize():
