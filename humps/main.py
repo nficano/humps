@@ -198,7 +198,7 @@ def is_snakecase(str_or_iter):
     :returns:
         True/False whether string or iterable is snake case
     """
-    if is_kebabcase(str_or_iter) and not (is_camelcase(str_or_iter)):
+    if is_kebabcase(str_or_iter) and not is_camelcase(str_or_iter):
         return False
 
     return str_or_iter == decamelize(str_or_iter)
