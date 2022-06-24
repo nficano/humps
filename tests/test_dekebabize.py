@@ -23,6 +23,7 @@ import humps
         ("API-Response", "API_Response"),
         ("_API-Response_", "_API_Response_"),
         ("__API-Response__", "__API_Response__"),
+        ("12345", "12345"),
     ],
 )
 def test_dekebabize(input_str, expected_output):
