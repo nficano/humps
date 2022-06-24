@@ -83,7 +83,12 @@ def kebabize(str_or_iter):
         return str_or_iter
 
     if not (s.isupper()) and (is_camelcase(s) or is_pascalcase(s)):
-        return _separate_words(string=_fix_abbreviations(s), separator="-").lower()
+        return (
+            _separate_words(
+                string=_fix_abbreviations(s), 
+                separator="-"
+            ).lower()
+        )
 
     return UNDERSCORE_RE.sub(lambda m: "-" + m.group(0)[-1], s)
 
