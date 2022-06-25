@@ -5,10 +5,10 @@ import re
 
 from collections.abc import Mapping
 
-ACRONYM_RE = re.compile(r"([A-Z]+)$|([A-Z]+)(?=[A-Z0-9])")
-PASCAL_RE = re.compile(r"([^\-_\s]+)")
-SPLIT_RE = re.compile(r"([\-_\s]*[A-Z]+?[^A-Z\-_\s]*[\-_\s]*)")
-UNDERSCORE_RE = re.compile(r"(?<=[^\-_\s])[\-_\s]+[^\-_\s]")
+ACRONYM_RE = re.compile(r"([A-Z]+)(?=[A-Z\d]|$)")
+PASCAL_RE = re.compile(r"([^\-_]+)")
+SPLIT_RE = re.compile(r"([\-_]*[A-Z][^A-Z]*[\-_]*)")
+UNDERSCORE_RE = re.compile(r"(?<=[^\-_])[\-_]+[^\-_]")
 
 
 def pascalize(str_or_iter):
@@ -25,7 +25,7 @@ def pascalize(str_or_iter):
     if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, pascalize)
 
-    s = str(_is_none(str_or_iter))
+    s = _is_none(str_or_iter)
     if s.isupper() or s.isnumeric():
         return str_or_iter
 
@@ -53,7 +53,7 @@ def camelize(str_or_iter):
     if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, camelize)
 
-    s = str(_is_none(str_or_iter))
+    s = _is_none(str_or_iter)
     if s.isupper() or s.isnumeric():
         return str_or_iter
 
@@ -78,7 +78,7 @@ def kebabize(str_or_iter):
     if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, kebabize)
 
-    s = str(_is_none(str_or_iter))
+    s = _is_none(str_or_iter)
     if s.isnumeric():
         return str_or_iter
 
@@ -107,7 +107,7 @@ def decamelize(str_or_iter):
     if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, decamelize)
 
-    s = str(_is_none(str_or_iter))
+    s = _is_none(str_or_iter)
     if s.isupper() or s.isnumeric():
         return str_or_iter
 
@@ -140,7 +140,7 @@ def dekebabize(str_or_iter):
     if isinstance(str_or_iter, (list, Mapping)):
         return _process_keys(str_or_iter, dekebabize)
 
-    s = str(_is_none(str_or_iter))
+    s = _is_none(str_or_iter)
     if s.isnumeric():
         return str_or_iter
 
@@ -206,11 +206,11 @@ def is_snakecase(str_or_iter):
 
 def _is_none(_in):
     """
-    Determine if the input is None.
+    Determine if the input is None and returns a string with white-space removed
     :param _in: input
-    :return: an empty sting if _in is None, else the input is kept unchanged
+    :return: an empty sting if _in is None, else the input is returned with white-space removed
     """
-    return "" if _in is None else _in
+    return "" if _in is None else re.sub(r"\s+", "", str(_in))
 
 
 def _process_keys(str_or_iter, fn):
