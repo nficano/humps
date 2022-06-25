@@ -206,9 +206,12 @@ def is_snakecase(str_or_iter):
 
 def _is_none(_in):
     """
-    Determine if the input is None and returns a string with white-space removed
+    Determine if the input is None
+    and returns a string with white-space removed
     :param _in: input
-    :return: an empty sting if _in is None, else the input is returned with white-space removed
+    :return:
+        an empty sting if _in is None,
+        else the input is returned with white-space removed
     """
     return "" if _in is None else re.sub(r"\s+", "", str(_in))
 
