@@ -14,10 +14,23 @@ from humps.main import (
     decamelize,
     kebabize,
     dekebabize,
+    pascalize,
     depascalize,
     is_camelcase,
-    is_pascalcase,
     is_kebabcase,
+    is_pascalcase,
     is_snakecase,
-    pascalize,
+)
+
+__all__ = (
+    "camelize",
+    "decamelize",
+    "kebabize",
+    "dekebabize",
+    "pascalize",
+    "depascalize",
+    "is_camelcase",
+    "is_kebabcase",
+    "is_pascalcase",
+    "is_snakecase",
 )
