@@ -15,7 +15,7 @@ setuptools.setup(
     author="Nick Ficano",
     author_email="nficano@gmail.com",
     packages=["humps"],
-    package_data={"": ["LICENSE"], "humps": ["py.typed", "main.pyi"]},
+    package_data={"": ["LICENSE"], "humps": ["py.typed", "__init__.pyi", "main.pyi"]},
     url="https://github.com/nficano/humps",
     license="The Unlicense (Unlicense)",
     classifiers=[
