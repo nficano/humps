@@ -75,9 +75,11 @@ humps.is_camelcase("illWearYourGranddadsClothes")  # True
 humps.is_pascalcase("ILookIncredible")  # True
 humps.is_snakecase("im_in_this_big_ass_coat")  # True
 humps.is_kebabcase('from-that-thrift-shop')  # True
-humps.is_camelcase("from_that_thrift_shop")  # False
-humps.is_snakecase("downTheRoad")  # False
-humps.is_kebabcase('from_that_thrift_shop')  # False
+humps.is_camelcase("down_the_road")  # False
+
+humps.is_snakecase("imGonnaPopSomeTags")  # False
+humps.is_kebabcase('only_got_twenty_dollars_in_my_pocket')  # False
+
 
 # what about abbrevations, acronyms, and initialisms? No problem!
 humps.decamelize("APIResponse")  # api_response
@@ -85,7 +87,7 @@ humps.decamelize("APIResponse")  # api_response
 
 <hr>
 
-## Humps Cookbook
+## Cookbook
 
 #### Pythonic Boto3 API Wrapper
 
