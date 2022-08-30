@@ -12,14 +12,14 @@ from humps.main import (
 )
 
 __all__ = [
-    camelize,
-    decamelize,
-    kebabize,
-    dekebabize,
-    depascalize,
-    is_camelcase,
-    is_pascalcase,
-    is_kebabcase,
-    is_snakecase,
-    pascalize,
+    "camelize",
+    "decamelize",
+    "kebabize",
+    "dekebabize",
+    "depascalize",
+    "is_camelcase",
+    "is_pascalcase",
+    "is_kebabcase",
+    "is_snakecase",
+    "pascalize",
 ]
