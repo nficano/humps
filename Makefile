@@ -58,4 +58,4 @@ clean-pyc:
 	find . -name '__pycache__' -exec rm -fr {} +
 
 install: clean
-	python setup.py install
+	poetry install
