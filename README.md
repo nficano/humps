@@ -23,10 +23,6 @@
 
 Convert strings (and dictionary keys) between snake case, camel case and pascal case in Python. Inspired by [Humps](https://github.com/domchristie/humps) for Node.
 
-## Jan 11, 2021: An open call for contributors:
-
-Please email me at nficano@gmail.com.
-
 ## Installation
 
 To install humps, simply use pipenv (or pip, of course):
