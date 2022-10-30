@@ -19,7 +19,7 @@ setuptools.setup(
     url="https://github.com/nficano/humps",
     license="The Unlicense (Unlicense)",
     classifiers=[
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: Unlicense",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
