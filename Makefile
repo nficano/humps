@@ -1,27 +1,26 @@
-deploy-patch: clean bumpversion-patch upload clean
+deploy-patch: clean version-patch git-push-on-deploy upload clean
 
-deploy-minor: clean bumpversion-minor upload clean
+deploy-minor: clean version-minor git-push-on-deploy upload clean
 
-deploy-major: clean bumpversion-major upload clean
+deploy-major: clean version-major git-push-on-deploy upload clean
 
-bumpversion-patch:
-	bumpversion patch
+version-patch:
+	poetry version patch
+
+version-minor:
+	poetry version minor
+
+version-major:
+	poetry version major
+
+git-push-on-deploy:
 	git push
-	git push --tags
-
-bumpversion-minor:
-	bumpversion minor
-	git push
-	git push --tags
-
-bumpversion-major:
-	bumpversion major
-	git push
+	git tag v${shell poetry version -s}
 	git push --tags
 
 upload:
-	python setup.py sdist bdist_wheel
-	twine upload dist/*
+	poetry build
+	poetry publish
 
 help:
 	@echo "clean - remove all build, test, coverage and Python artifacts"
