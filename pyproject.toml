@@ -1,9 +1,30 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 name = "pyhumps"
 version = "3.8.0"
 description = "Convert strings (and dictionary keys) between snake case, camel case and pascal case in Python."
-authors = ["Nick Ficano <nficano@gmail.com>"]
 license = "The Unlicense (Unlicense)"
+authors = ["Nick Ficano <nficano@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/nficano/humps"
+repository = "https://github.com/nficano/humps"
+documentation = "https://humps.readthedocs.io/"
+keywords = ["humps", "snakecase", "convert case", "camelcase", "kebabcase"]
+classifiers = [
+    "License :: OSI Approved :: Unlicense",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
 packages = [
     { include = "humps" },
 ]
@@ -19,7 +40,3 @@ pytest-cov = "^4.0.0"
 coveralls = "^3.3.1"
 sphinx-rtd-theme = "^1.0.0"
 Sphinx = "^4.3.2"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
