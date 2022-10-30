@@ -4,6 +4,9 @@ deploy-minor: clean version-minor git-push-on-deploy upload clean
 
 deploy-major: clean version-major git-push-on-deploy upload clean
 
+# Version prior to update
+VERSION := ${shell poetry version -s}
+
 version-patch:
 	poetry version patch
 
@@ -14,6 +17,7 @@ version-major:
 	poetry version major
 
 git-push-on-deploy:
+	git commit -m 'Bump version: $(VERSION) → $(shell poetry version -s)' pyproject.toml
 	git push
 	git tag v${shell poetry version -s}
 	git push --tags

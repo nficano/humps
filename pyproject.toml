@@ -14,7 +14,7 @@ repository = "https://github.com/nficano/humps"
 documentation = "https://humps.readthedocs.io/"
 keywords = ["humps", "snakecase", "convert case", "camelcase", "kebabcase"]
 classifiers = [
-    "License :: OSI Approved :: Unlicense",
+    "License :: OSI Approved :: The Unlicense (Unlicense)",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.7",
