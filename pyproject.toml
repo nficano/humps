@@ -13,15 +13,12 @@ homepage = "https://github.com/nficano/humps"
 repository = "https://github.com/nficano/humps"
 documentation = "https://humps.readthedocs.io/"
 keywords = ["humps", "snakecase", "convert case", "camelcase", "kebabcase"]
+
+# Note that Python classifiers are still automatically added for you and are determined by your python requirement.
+# The license property will also set the License classifier automatically.
 classifiers = [
-    "License :: OSI Approved :: The Unlicense (Unlicense)",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Topic :: Utilities",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
