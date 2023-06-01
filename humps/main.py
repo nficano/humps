@@ -7,7 +7,7 @@ from collections.abc import Mapping
 
 ACRONYM_RE = re.compile(r"([A-Z\d]+)(?=[A-Z\d]|$)")
 PASCAL_RE = re.compile(r"([^\-_]+)")
-SPLIT_RE = re.compile(r"([\-_]*[A-Z][^A-Z]*[\-_]*)")
+SPLIT_RE = re.compile(r"([\-_]*(?<=[^0-9])(?=[A-Z])[^A-Z]*[\-_]*)")
 UNDERSCORE_RE = re.compile(r"(?<=[^\-_])[\-_]+[^\-_]")
 
 
