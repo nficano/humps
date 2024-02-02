@@ -3,7 +3,7 @@ This module contains all the core logic for humps.
 """
 import re
 
-from collections.abc import Mapping  # pylint: disable-msg=E0611
+from collections.abc import Mapping
 
 ACRONYM_RE = re.compile(r"([A-Z\d]+)(?=[A-Z\d]|$)")
 PASCAL_RE = re.compile(r"([^\-_]+)")
