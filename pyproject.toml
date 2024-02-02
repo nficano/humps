@@ -1,9 +1,27 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 name = "pyhumps"
 version = "3.8.0"
 description = "Convert strings (and dictionary keys) between snake case, camel case and pascal case in Python."
-authors = ["Nick Ficano <nficano@gmail.com>"]
 license = "The Unlicense (Unlicense)"
+authors = ["Nick Ficano <nficano@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/nficano/humps"
+repository = "https://github.com/nficano/humps"
+documentation = "https://humps.readthedocs.io/"
+keywords = ["humps", "snakecase", "convert case", "camelcase", "kebabcase"]
+
+# Note that Python classifiers are still automatically added for you and are determined by your python requirement.
+# The license property will also set the License classifier automatically.
+classifiers = [
+    "Operating System :: OS Independent",
+    "Topic :: Utilities",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
 packages = [
     { include = "humps" },
 ]
@@ -12,18 +30,10 @@ packages = [
 python = "^3.7"
 
 [tool.poetry.dev-dependencies]
-bumpversion = "^0.6.0"
 pytest = "^7.1.3"
 pylint = "^2.12.2"
 flake8 = "^5.0.4"
 pytest-cov = "^4.0.0"
-pathlib2 = "^2.3.6"
-scandir = "^1.10.0"
 coveralls = "^3.3.1"
-twine = "^3.8.0"
-ipython = "^7.34.0"
+sphinx-rtd-theme = "^1.0.0"
 Sphinx = "^4.3.2"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"

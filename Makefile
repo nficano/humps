@@ -1,27 +1,30 @@
-deploy-patch: clean bumpversion-patch upload clean
+deploy-patch: clean version-patch git-push-on-deploy upload clean
 
-deploy-minor: clean bumpversion-minor upload clean
+deploy-minor: clean version-minor git-push-on-deploy upload clean
 
-deploy-major: clean bumpversion-major upload clean
+deploy-major: clean version-major git-push-on-deploy upload clean
 
-bumpversion-patch:
-	bumpversion patch
+# Version prior to update
+VERSION := ${shell poetry version -s}
+
+version-patch:
+	poetry version patch
+
+version-minor:
+	poetry version minor
+
+version-major:
+	poetry version major
+
+git-push-on-deploy:
+	git commit -m 'Bump version: $(VERSION) → $(shell poetry version -s)' pyproject.toml
 	git push
-	git push --tags
-
-bumpversion-minor:
-	bumpversion minor
-	git push
-	git push --tags
-
-bumpversion-major:
-	bumpversion major
-	git push
+	git tag v${shell poetry version -s}
 	git push --tags
 
 upload:
-	python setup.py sdist bdist_wheel
-	twine upload dist/*
+	poetry build
+	poetry publish
 
 help:
 	@echo "clean - remove all build, test, coverage and Python artifacts"
@@ -58,4 +61,4 @@ clean-pyc:
 	find . -name '__pycache__' -exec rm -fr {} +
 
 install: clean
-	python setup.py install
+	poetry install
