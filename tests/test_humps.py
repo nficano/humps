@@ -24,6 +24,7 @@ def test_converting_strings():
         ("memMB", "mem_mb"),
         # Fixed issue #258
         ("B52Thing", "b52_thing"),
+        ("B2BThing", "b2b_thing"),
     ],
 )
 def test_camelized_acronyms(input_str, expected_output):
