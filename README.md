@@ -79,6 +79,7 @@ humps.is_kebabcase('only_got_twenty_dollars_in_my_pocket')  # False
 
 # what about abbrevations, acronyms, and initialisms? No problem!
 humps.decamelize("APIResponse")  # api_response
+humps.decamelize("B52Thing")  # b52_thing
 ```
 
 <hr>

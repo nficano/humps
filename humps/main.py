@@ -7,7 +7,16 @@ from collections.abc import Mapping  # pylint: disable-msg=E0611
 
 ACRONYM_RE = re.compile(r"([A-Z\d]+)(?=[A-Z\d]|$)")
 PASCAL_RE = re.compile(r"([^\-_]+)")
-SPLIT_RE = re.compile(r"([\-_]*(?<=[^0-9])(?=[A-Z])[^A-Z]*[\-_]*)")
+SPLIT_RE = re.compile(
+    r"([\-_]*"                       # optional leading hyphens/underscores
+    r"(?:"                           # either
+    r"(?<=[^0-9_])(?=[A-Z])"         # non‐digit/non‐underscore → uppercase
+    r"|"                             # or
+    r"(?<=[0-9])(?=[A-Z][a-z])"      # digit → uppercase followed by lowercase
+    r")"
+    r"[^A-Z]*"                       # any non‐uppercase chars
+    r"[\-_]*)"                       # optional trailing hyphens/underscores
+)
 UNDERSCORE_RE = re.compile(r"(?<=[^\-_])[\-_]+[^\-_]")
 
 
