@@ -1,6 +1,7 @@
 """
 This module contains all the core logic for humps.
 """
+
 import re
 
 from collections.abc import Mapping  # pylint: disable-msg=E0611
@@ -9,6 +10,7 @@ ACRONYM_RE = re.compile(r"([A-Z\d]+)(?=[A-Z\d]|$)")
 PASCAL_RE = re.compile(r"([^\-_]+)")
 SPLIT_RE = re.compile(r"([\-_]*(?<=[^0-9])(?=[A-Z])[^A-Z]*[\-_]*)")
 UNDERSCORE_RE = re.compile(r"(?<=[^\-_])[\-_]+[^\-_]")
+UNDERSCORE_OR_SPACE_RE = re.compile(r"(?<=[^\s\-_])[\s\-_]+[^\s\-_]")
 
 
 def pascalize(str_or_iter):
@@ -62,7 +64,7 @@ def camelize(str_or_iter):
 
     # For string "hello_world", match will contain
     #             the regex capture group for "_w".
-    return UNDERSCORE_RE.sub(lambda m: m.group(0)[-1].upper(), s)
+    return UNDERSCORE_OR_SPACE_RE.sub(lambda m: m.group(0)[-1].upper(), s)
 
 
 def kebabize(str_or_iter):
@@ -83,14 +85,11 @@ def kebabize(str_or_iter):
         return str_or_iter
 
     if not (s.isupper()) and (is_camelcase(s) or is_pascalcase(s)):
-        return (
-            _separate_words(
-                string=_fix_abbreviations(s),
-                separator="-"
-            ).lower()
-        )
+        return _separate_words(
+            string=_fix_abbreviations(s), separator="-"
+        ).lower()
 
-    return UNDERSCORE_RE.sub(lambda m: "-" + m.group(0)[-1], s)
+    return UNDERSCORE_OR_SPACE_RE.sub(lambda m: "-" + m.group(0)[-1], s)
 
 
 def decamelize(str_or_iter):
@@ -207,13 +206,13 @@ def is_snakecase(str_or_iter):
 def _is_none(_in):
     """
     Determine if the input is None
-    and returns a string with white-space removed
+    and returns a string with trailing and leading spaces removed.
     :param _in: input
     :return:
         an empty sting if _in is None,
-        else the input is returned with white-space removed
+        else the input is returned with leading and trailing spaces removed.
     """
-    return "" if _in is None else re.sub(r"\s+", "", str(_in))
+    return "" if _in is None else str(_in).strip()
 
 
 def _process_keys(str_or_iter, fn):

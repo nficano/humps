@@ -1,6 +1,7 @@
 """
 Test camelization.
 """
+
 import pytest
 
 import humps
@@ -32,6 +33,16 @@ import humps
         # Fixed issue # 256
         ("", ""),
         (None, ""),
+        # Strings with spaces
+        ("test string", "testString"),
+        ("test   string", "testString"),
+        ("  test string  ", "testString"),
+        # strings with underscores and spaces
+        ("test_string with spaces", "testStringWithSpaces"),
+        ("test__string with   spaces", "testStringWithSpaces"),
+        ("  test_string with spaces  ", "testStringWithSpaces"),
+        # strings with mixed cases
+        ("TestString", "testString"),
     ],
 )
 def test_camelize(input_str, expected_output):

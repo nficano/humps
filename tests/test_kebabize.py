@@ -1,6 +1,7 @@
 """
 Test kebabization.
 """
+
 import pytest
 
 import humps
@@ -21,6 +22,16 @@ import humps
         ("API_Response", "API-Response"),
         ("_API_Response_", "_API-Response_"),
         ("__API_Response__", "__API-Response__"),
+        # Strings with spaces
+        ("test string", "test-string"),
+        ("test   string", "test-string"),
+        ("  test string  ", "test-string"),
+        # strings with underscores and spaces
+        ("test_string with spaces", "test-string-with-spaces"),
+        ("test__string with   spaces", "test-string-with-spaces"),
+        ("  test_string with spaces  ", "test-string-with-spaces"),
+        # strings with mixed cases
+        ("TestString", "test-string"),
     ],
 )
 def test_kebabize(input_str, expected_output):
