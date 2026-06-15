@@ -54,7 +54,13 @@ def camelize(str_or_iter):
         return _process_keys(str_or_iter, camelize)
 
     s = _is_none(str_or_iter)
-    if s.isupper() or s.isnumeric():
+    # The all-uppercase short-circuit preserves acronyms (e.g. "API"), but
+    # str.isupper() also reports True for separator-laden strings like
+    # "A_B_C" (underscores are uncased). Returning those unchanged left the
+    # separators in place, so pascalize() of single-character segments
+    # ("a_b_c") produced "A_B_C" instead of "ABC". Only short-circuit when
+    # there are no separators left to convert.
+    if (s.isupper() and "_" not in s and "-" not in s) or s.isnumeric():
         return str_or_iter
 
     if len(s) != 0 and not s[:2].isupper():
