@@ -21,6 +21,13 @@ import humps
         ("APIResponse", "APIResponse"),
         ("_APIResponse_", "_APIResponse_"),
         ("__APIResponse__", "__APIResponse__"),
+        # Single-character segments: every word is one char, so the
+        # intermediate became all-uppercase ("A_B_C") and the inner
+        # camelize() short-circuited on str.isupper(), leaving the
+        # separators in place ("A_B_C" instead of "ABC").
+        ("a_b_c", "ABC"),
+        ("x_y_z", "XYZ"),
+        ("a_bb_c", "ABbC"),
         # Fixed issue # 256
         ("", ""),
         (None, ""),
